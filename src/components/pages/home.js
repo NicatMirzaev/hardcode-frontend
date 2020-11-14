@@ -1,11 +1,10 @@
 import React from 'react';
+import Header from '../ui/header';
 
-class Home extends React.Component {
-  render() {
-    return (
-      <div>Test</div>
-    );
-  }
+const Home = () => {
+  return (
+    <Header/>
+  )
 }
 
 export default Home;
