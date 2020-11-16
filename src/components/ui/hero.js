@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Hero = () => (
-  <div className="px-4 mb-16 md:block">
+  <div className="px-4 mb-24 md:block">
     <div className="pb-8 mt-auto">
       <div className="text-center">
         <h2 className="text-4xl tracking-tight mb-12 leading-10 font-extrabold text-gray-900 sm:text-5xl sm:leading-none md:text-6xl">Görevleri bitirerek algoritmanı geliştir!</h2>
@@ -11,11 +11,11 @@ const Hero = () => (
           </p>
         </div>
 
-        <div className="mb-6 mt-12">
-          <a href="#" className="sm:w-full px-8 py-3 border mr-6 border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+        <div className="mb-6 mt-12 flex flex-col sm:block">
+          <a href="#" className="px-8 py-3 border sm:mr-6 border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
             Hemen Başla!
           </a>
-          <a href="#" className="sm:w-full px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:text-indigo-600 hover:bg-indigo-50 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-300 transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+          <a href="#" className="px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:text-indigo-600 hover:bg-indigo-50 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-300 transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
             Abone Ol
           </a>
         </div>

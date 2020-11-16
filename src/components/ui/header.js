@@ -22,7 +22,7 @@ const Header = () => {
   }, [menu])
 
   return (
-    <div className="relative bg-white mb-16">
+    <div className="relative bg-white mb-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-24">
         <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
           <div className="lg:w-0 lg:flex-1">
@@ -46,8 +46,8 @@ const Header = () => {
             <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg">
               <div className="rounded-md bg-white shadow-xs">
                 <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-                  <a href="/" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" role="menuitem">Abone Ol</a>
-                  <a href="/" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" role="menuitem">Hemen Başla</a>
+                  <a href="/" className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" role="menuitem">Abone Ol</a>
+                  <a href="/" className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" role="menuitem">Hemen Başla</a>
                 </div>
               </div>
             </div>
