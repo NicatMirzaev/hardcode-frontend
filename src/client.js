@@ -20,9 +20,7 @@ if (module.hot) {
   module.hot.accept('./redux/containers/app', () => {
     hydrate(
       <Provider store={store}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <App />
       </Provider>,
       document.getElementById('root')
     );

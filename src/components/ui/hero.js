@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Hero = () => (
+const Hero = props => (
   <div className="px-4 mb-24 md:block">
     <div className="pb-8 mt-auto">
       <div className="text-center">
@@ -10,12 +10,11 @@ const Hero = () => (
             Yarışmalara katılarak ve görevleri bitirerek sürpriz ödüller kazan. Üstelik tamamen Türkçe ve Ücretsiz! tek yapman gereken giriş yapmak.
           </p>
         </div>
-
         <div className="mb-6 mt-12 flex flex-col sm:block">
-          <a href="#" className="px-8 py-3 border sm:mr-6 border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+          <a href="/" onClick={e => props.onClickGetStarted(e)} className="px-8 py-3 border sm:mr-6 border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
             Hemen Başla!
           </a>
-          <a href="#" className="px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:text-indigo-600 hover:bg-indigo-50 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-300 transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+          <a href="/" className="px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:text-indigo-600 hover:bg-indigo-50 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-300 transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
             Abone Ol
           </a>
         </div>

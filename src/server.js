@@ -15,7 +15,7 @@ server
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
   .get('/*', (req, res) => {
 
-    const preloadedState = {counter: 0};
+    const preloadedState = {user: {isLogged: false, isLoading: true}};
 
     // Create a new Redux store instance
     const store = configureStore(preloadedState);
@@ -41,6 +41,7 @@ server
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta charset="utf-8" />
         <title>Welcome to Razzle</title>
+        <link rel="stylesheet" href="https://pagecdn.io/lib/font-awesome/5.10.0-11/css/all.min.css" integrity="sha256-p9TTWD+813MlLaxMXMbTA7wN/ArzGyW/L7c5+KkjOkM=" crossorigin="anonymous">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         ${
           assets.client.css
