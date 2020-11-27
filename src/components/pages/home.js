@@ -205,7 +205,7 @@ const Home = props => {
     )
   }
   if(props.user.isLogged === true) {
-    props.history.push('/dashboard');
+    setTimeout(() => props.history.push('/dashboard'), 250);
     return null;
   }
   return (
