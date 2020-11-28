@@ -33,3 +33,11 @@ export const USER_DETAILS = `query me {
     isConfirmed
   }
 }`
+
+export const FORGOT_PASSWORD = `mutation sendResetPasswordConfirmation($email: String!) {
+  sendResetPasswordConfirmation(email: $email)
+}`;
+
+export const RESET_PASSWORD = `mutation resetPassword($token: String!, $newPassword: String!, $type: Int!) {
+  resetPassword(token: $token, newPassword: $newPassword, type: $type)
+}`;

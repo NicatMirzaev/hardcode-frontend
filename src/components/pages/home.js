@@ -5,7 +5,7 @@ import Features from '../ui/features.js';
 import Footer from '../ui/footer.js';
 import Popup from '../ui/popup.js';
 import settings from '../../lib/settings.js';
-import { REGISTER_USER, LOGIN_USER } from '../../lib/queries.js';
+import { REGISTER_USER, LOGIN_USER, FORGOT_PASSWORD } from '../../lib/queries.js';
 
 const Home = props => {
   const [popup, setPopup] = React.useState({type: 2, show: false});
@@ -77,6 +77,30 @@ const Home = props => {
       }
     })
   }
+
+  const onClickForgotPassword = () => {
+      if(!email.length) return setState({disabled: false, error: 'Lütfen hesabınızın email adresini girin.'});
+      fetch(settings.apiURL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          query: FORGOT_PASSWORD,
+          variables: { email }
+        })
+      }).then(r => r.json())
+      .then(data => {
+        if(data.errors){
+          setState({disabled: false, error: data.errors[0].message})
+        }
+        else {
+          setPopup({type: 4, show: true})
+        }
+      })
+  }
+
   const showPopup = () => {
     if(popup.show === false) return null;
     if(popup.type == 1){
@@ -165,7 +189,7 @@ const Home = props => {
            <a href="/" onClick={e => onClickLogin(e)} className="whitespace-no-wrap inline-flex items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150 w-full">
              Giriş Yap
            </a>
-           <p className="mt-2 leading-6 text-blue-500 mb-6 cursor-pointer">
+           <p onClick={onClickForgotPassword} className="mt-2 leading-6 text-blue-500 mb-6 cursor-pointer">
              Şifrenizi mi unuttunuz?
            </p>
            <div className="flex justify-center bg-gray-200">
@@ -190,6 +214,23 @@ const Home = props => {
           <div className="flex justify-center mb-3"><h2 className="text-4x1 font-bold">Son bir adım!</h2></div>
           <p className="text-base leading-6">
             <span className="font-bold">{email} </span> email adresine aktivasyon linki içeren bir mail gönderildi. Hesabınızı kullanabilmek için hesabınızı onaylamanız gerekiyor.
+          </p>
+        </Popup>
+      )
+    }
+    else if(popup.type == 4) {
+      return (
+        <Popup>
+          <div className="flex justify-end pb-3">
+            <div onClick={() => setPopup({type: 2, show: false})} className="modal-close cursor-pointer z-50">
+              <svg className="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+              </svg>
+            </div>
+          </div>
+          <div className="flex justify-center mb-3"><h2 className="text-4x1 font-bold">Şifre Değiştirme Onayı</h2></div>
+          <p className="text-base leading-6">
+            <span className="font-bold">{email} </span> email adresine şifre değiştirme onayı içeren bir mail gönderildi. Şifrenizi değiştirebilmek için onay vermelisiniz.
           </p>
         </Popup>
       )

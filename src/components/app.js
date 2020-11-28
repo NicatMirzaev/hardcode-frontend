@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import Home from '../redux/containers/home';
 import '../css/tailwind.output.css';
 import ConfirmUser from './pages/confirm-user.js';
+import ResetPassword from './pages/reset-password.js';
 import settings from '../lib/settings';
 import { getValue } from '../lib/store.js';
 import { USER_DETAILS } from '../lib/queries';
@@ -42,6 +43,7 @@ const App = props => {
     <Switch>
       <Route exact path="/" component={Home}/>
       <Route path="/confirm/:token" component={ConfirmUser}/>
+      <Route path="/reset-password/:token" component={ResetPassword}/>
     </Switch>
   )
 };
