@@ -32,7 +32,7 @@ const Header = props => {
             </a>
           </div>
           <div className="hidden md:flex items-center justify-end space-x-8 md:flex-1 lg:w-0">
-            <a href="/" className="whitespace-no-wrap text-base leading-6 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900">
+            <a href="/" onClick={e => props.onClickSubscribe(e)} className="whitespace-no-wrap text-base leading-6 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900">
               Abone Ol
             </a>
             <span className="inline-flex rounded-md shadow-sm">

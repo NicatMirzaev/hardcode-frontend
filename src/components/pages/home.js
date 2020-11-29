@@ -5,7 +5,7 @@ import Features from '../ui/features.js';
 import Footer from '../ui/footer.js';
 import Popup from '../ui/popup.js';
 import settings from '../../lib/settings.js';
-import { REGISTER_USER, LOGIN_USER, FORGOT_PASSWORD } from '../../lib/queries.js';
+import { REGISTER_USER, LOGIN_USER, FORGOT_PASSWORD, SUBSCRIBE_EMAIL } from '../../lib/queries.js';
 
 const Home = props => {
   const [popup, setPopup] = React.useState({type: 2, show: false});
@@ -23,6 +23,36 @@ const Home = props => {
     setPopup({type: 2, show: !popup.show});
   }
 
+  const onClickSubscribe = e => {
+    e.preventDefault();
+    setUsername('');
+    setEmail('');
+    setPassword('');
+    setState({disabled: false, error: ''})
+    setPopup({type: 5, show: true})
+  }
+
+  const onClickSubscribePopup = () => {
+    fetch(settings.apiURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        query: SUBSCRIBE_EMAIL,
+        variables: { email },
+      })
+    }).then(r => r.json())
+    .then(data => {
+      if(data.errors) {
+        setState({disabled: false, error: data.errors[0].message})
+      }
+      else {
+        setPopup({type: 6, show: true})
+      }
+    })
+  }
   const onClickRegister = e => {
     e.preventDefault();
     setState({disabled: true, error: ''});
@@ -235,6 +265,45 @@ const Home = props => {
         </Popup>
       )
     }
+    else if(popup.type == 5) {
+      return (
+        <Popup>
+          <div className="flex justify-end pb-3">
+            <div onClick={() => setPopup({type: 2, show: false})} className="modal-close cursor-pointer z-50">
+              <svg className="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+              </svg>
+            </div>
+          </div>
+          <div className="flex justify-center mb-3"><h2 className="text-4x1 font-bold">Abone Ol</h2></div>
+          <p className="text-base leading-6 mb-3">
+            Ücretsiz bir şekilde abone olarak yeniliklerden haberdar olmak için aşağıya e-mail adresinizi yazmalısınız. E-mail adresleri tamamen gizli tutulmaktadır, dilediğiniz zaman abonelikten çıkabilirsiniz.
+          </p>
+          {state.error.length > 0 && <p className="text-sm text-red-500">{state.error}</p>}
+          <input className="mb-6 shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="email" value={email} onChange={e => setEmail(e.target.value)} type="text" placeholder="Email Adresiniz"/>
+          <p onClick={onClickSubscribePopup} className="whitespace-no-wrap cursor-pointer inline-flex w-full items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
+            Abone Ol
+          </p>
+        </Popup>
+      )
+    }
+    else if(popup.type == 6) {
+      return (
+        <Popup>
+          <div className="flex justify-end pb-3">
+            <div onClick={() => setPopup({type: 2, show: false})} className="modal-close cursor-pointer z-50">
+              <svg className="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+              </svg>
+            </div>
+          </div>
+          <div className="flex justify-center mb-3"><h2 className="text-4x1 font-bold">Teşekkürler!</h2></div>
+          <p className="text-base leading-6">
+            E-mail adresi başarıyla sisteme kayıt edildi. Artık yeniliklerden haberdar olacaksınız, dilediğiniz zaman abonelikten çıkabilirsiniz.
+          </p>
+        </Popup>
+      )
+    }
   }
   if(props.user.isLoading === true) {
     return (
@@ -251,8 +320,8 @@ const Home = props => {
   }
   return (
     <div>
-      <Header onClickGetStarted={onClickGetStarted}/>
-      <Hero onClickGetStarted={onClickGetStarted}/>
+      <Header onClickGetStarted={onClickGetStarted} onClickSubscribe={onClickSubscribe}/>
+      <Hero onClickGetStarted={onClickGetStarted} onClickSubscribe={onClickSubscribe}/>
       <Features/>
       <Footer/>
       {showPopup()}

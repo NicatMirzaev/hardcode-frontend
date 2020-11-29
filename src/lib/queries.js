@@ -41,3 +41,7 @@ export const FORGOT_PASSWORD = `mutation sendResetPasswordConfirmation($email: S
 export const RESET_PASSWORD = `mutation resetPassword($token: String!, $newPassword: String!, $type: Int!) {
   resetPassword(token: $token, newPassword: $newPassword, type: $type)
 }`;
+
+export const SUBSCRIBE_EMAIL = `mutation subscribeEmail($email: String!) {
+  subscribeEmail(email: $email)
+}`;
