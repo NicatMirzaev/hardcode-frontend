@@ -1,7 +1,7 @@
 import React from 'react';
-import Logo from '../../logo.png';
-import MenuIcon from '../../icons/menu.png';
-import Popup from './popup.js';
+import Logo from '../../../logo.png';
+import MenuIcon from '../../../icons/menu.png';
+import Popup from '../popup.js';
 
 const Header = props => {
   const [menu, setMenu] = React.useState(false);

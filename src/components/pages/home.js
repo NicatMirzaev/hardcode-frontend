@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from '../ui/header';
-import Hero from '../ui/hero';
-import Features from '../ui/features.js';
-import Footer from '../ui/footer.js';
+import Header from '../ui/landing/header';
+import Hero from '../ui/landing/hero';
+import Features from '../ui/landing/features.js';
+import Footer from '../ui/landing/footer.js';
 import Popup from '../ui/popup.js';
 import settings from '../../lib/settings.js';
 import { REGISTER_USER, LOGIN_USER, FORGOT_PASSWORD, SUBSCRIBE_EMAIL } from '../../lib/queries.js';

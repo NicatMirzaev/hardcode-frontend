@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Home from '../redux/containers/home';
+import Dashboard from '../redux/containers/dashboard';
 import '../css/tailwind.output.css';
 import ConfirmUser from './pages/confirm-user.js';
 import ResetPassword from './pages/reset-password.js';
@@ -27,9 +28,13 @@ const App = props => {
       .then(data => {
         if(data.data) {
           const userData = data.data.me;
-          if(userData.isConfirmed === true){
-            props.setUser({isLogged: true, isLoading: false, token: value, id: userData.id, username: userData.username})
+          if(userData)
+          {
+            if(userData.isConfirmed === true){
+              props.setUser({isLogged: true, isLoading: false, token: value, id: userData.id, username: userData.username})
+            }
           }
+          else props.setUser({isLogged: false, isLoading: false})
         }
         else {
           props.setUser({isLogged: false, isLoading: false})
@@ -42,6 +47,7 @@ const App = props => {
   return (
     <Switch>
       <Route exact path="/" component={Home}/>
+      <Route exact path="/dashboard" component={Dashboard}/>
       <Route path="/confirm/:token" component={ConfirmUser}/>
       <Route path="/reset-password/:token" component={ResetPassword}/>
     </Switch>

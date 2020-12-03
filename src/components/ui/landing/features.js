@@ -1,5 +1,5 @@
 import React from 'react';
-import FreeIcon from '../../icons/free.png';
+import FreeIcon from '../../../icons/free.png';
 
 const features = [
   {

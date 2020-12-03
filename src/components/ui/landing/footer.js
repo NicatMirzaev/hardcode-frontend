@@ -1,8 +1,8 @@
 import React from 'react';
-import Logo from '../../logo.png';
-import FacebookIcon from '../../icons/facebook.png';
-import InstagramIcon from '../../icons/instagram.png';
-import TwitterIcon from '../../icons/twitter.png';
+import Logo from '../../../logo.png';
+import FacebookIcon from '../../../icons/facebook.png';
+import InstagramIcon from '../../../icons/instagram.png';
+import TwitterIcon from '../../../icons/twitter.png';
 
 const Footer = () => (
   <footer className="footer bg-white relative pt-1 border-b-2 border-blue-700">
