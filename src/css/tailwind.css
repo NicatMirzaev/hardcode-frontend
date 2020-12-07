@@ -5,5 +5,9 @@
 @tailwind utilities;
 
 html, body, #root {
-  height: 100% !important;
+  height: 100%;
+}
+.h-1\/2 {
+  height: 55%;
+  max-height: 55%;
 }

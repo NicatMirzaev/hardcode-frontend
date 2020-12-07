@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../ui/dashboard/navbar';
+import Card from '../ui/card';
 
 const Dashboard = props => {
   if(props.user.isLoading === true) {
@@ -16,8 +17,13 @@ const Dashboard = props => {
     return null;
   }
   return (
-    <div className="h-full">
-      <Navbar/>
+    <div className="flex w-full h-full">
+      <div className="flex w-1/3">
+        <Navbar/>
+      </div>
+      <div className="flex h-1/2 w-1/2 self-center flex-wrap">
+        <Card/>
+      </div>
     </div>
   )
 }
