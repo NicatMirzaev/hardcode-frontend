@@ -3,7 +3,7 @@ import EyeIcon from '../../icons/eye.svg';
 import HeartIcon from '../../icons/heart.svg';
 const Card = () => {
   return (
-    <div className="flex flex-col h-1/2 w-56 rounded overflow-hidden shadow-lg">
+    <div className="flex flex-col w-56 mr-6 rounded overflow-hidden shadow-lg mb-12">
       <img className="mb-6" src="https://www.tutorialrepublic.com/lib/images/javascript-illustration.png"/>
       <h4 className="text-lg text-center leading-6 font-medium text-gray-900 mb-6">Javascript (Başlangıç)</h4>
       <div className="flex ml-6 mb-2">

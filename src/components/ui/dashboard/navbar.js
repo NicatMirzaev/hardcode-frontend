@@ -18,7 +18,7 @@ const dropdownStyle = {
 }
 const Navbar = props => {
   return (
-    <div style={{backgroundColor: '#323f4b'}} className="flex flex-col items-center w-16 h-full">
+    <div style={{backgroundColor: '#323f4b'}} className="flex flex-col fixed items-center w-16 h-full">
       <div className="flex mt-3 mb-16">
         <img src="https://i.imgur.com/8Km9tLL.jpg" className="rounded-full border-solid border-white border-2 w-12 cursor-pointer"/>
       </div>

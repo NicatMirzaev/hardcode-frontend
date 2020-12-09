@@ -11,3 +11,13 @@ html, body, #root {
   height: 55%;
   max-height: 55%;
 }
+
+.mt-card-container {
+  margin-top: 0;
+}
+
+@media screen and (max-width: 930px) {
+  .mt-card-container {
+    margin-top: auto;
+  }
+}

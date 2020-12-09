@@ -18,10 +18,24 @@ const Dashboard = props => {
   }
   return (
     <div className="flex w-full h-full">
-      <div className="flex w-1/3">
+      <div className="flex sm:w-1/5 w-1/3">
         <Navbar/>
       </div>
-      <div className="flex h-1/2 w-1/2 self-center flex-wrap">
+      <div className="flex w-full justify-right flex-wrap">
+        <div className="flex my-12 md:w-full w-3/4">
+          <input className="shadow appearance-none border mx-auto rounded py-2 px-3 sm:w-1/2 w-full text-grey-darker" placeholder="Arama Yapın"/>
+        </div>
+        <Card/>
+        <Card/>
+        <Card/>
+        <Card/>
+        <Card/>
+        <Card/>
+        <Card/>
+        <Card/>
+        <Card/>
+        <Card/>
+        <Card/>
         <Card/>
       </div>
     </div>
