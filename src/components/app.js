@@ -5,6 +5,7 @@ import Dashboard from '../redux/containers/dashboard';
 import '../css/tailwind.output.css';
 import ConfirmUser from './pages/confirm-user.js';
 import ResetPassword from './pages/reset-password.js';
+import MyProfile from '../redux/containers/my-profile';
 import settings from '../lib/settings';
 import { getValue } from '../lib/store.js';
 import { USER_DETAILS } from '../lib/queries';
@@ -50,6 +51,7 @@ const App = props => {
       <Route exact path="/dashboard" component={Dashboard}/>
       <Route path="/confirm/:token" component={ConfirmUser}/>
       <Route path="/reset-password/:token" component={ResetPassword}/>
+      <Route path="/my-profile" component={MyProfile}/>
     </Switch>
   )
 };
