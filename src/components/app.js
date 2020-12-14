@@ -29,10 +29,12 @@ const App = props => {
       .then(data => {
         if(data.data) {
           const userData = data.data.me;
+          console.log(userData);
           if(userData)
           {
             if(userData.isConfirmed === true){
-              props.setUser({isLogged: true, isLoading: false, token: value, id: userData.id, username: userData.username})
+              console.log(userData);
+              props.setUser({isLogged: true, isLoading: false, data: {token: value, user: userData}})
             }
           }
           else props.setUser({isLogged: false, isLoading: false})

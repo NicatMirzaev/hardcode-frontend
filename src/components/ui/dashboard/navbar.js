@@ -44,7 +44,7 @@ const Navbar = props => {
         <img onClick={() => setMenu(!menu)} src="https://i.imgur.com/8Km9tLL.jpg" className="rounded-full border-solid border-white border-2 w-12 cursor-pointer"/>
       </div>
       <div className="flex flex-col mb-12">
-        <img className="mb-8 cursor-pointer" src={HomeIcon}/>
+        <img onClick={() => props.history.push('/dashboard')} className="mb-8 cursor-pointer" src={HomeIcon}/>
         <img className="mb-8 cursor-pointer" src={SearchIcon}/>
         <img className="cursor-pointer"src={LeaderboardIcon}/>
       </div>

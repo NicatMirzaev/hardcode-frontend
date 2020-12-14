@@ -6,6 +6,9 @@ import LinkedinIcon from '../../icons/linkedin.svg';
 import Card from '../ui/card';
 
 const MyProfile = props => {
+  const [content, setContent] = React.useState(0);
+
+
   if(props.user.isLoading === true) {
     return (
       <div className="w-full h-full flex justify-center">
@@ -41,26 +44,45 @@ const MyProfile = props => {
               <a href="/" target="_blank"><img src={LinkedinIcon}/></a>
             </div>
           </div>
-          <p style={{borderRadius: '8rem'}} className="whitespace-no-wrap cursor-pointer inline-flex w-full items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
+          <p onClick={() => setContent(1)} style={{borderRadius: '8rem'}} className="whitespace-no-wrap cursor-pointer inline-flex w-full items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
             Profil Ayarları
           </p>
         </div>
         <div className="flex w-full flex-col">
-          <input className="shadow appearance-none w-11/12 border mb-12 rounded py-2 px-3 text-grey-darker" placeholder="Arama Yapın"/>
-          <div className="flex w-full h-full flex-wrap">
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-          </div>
+          {content == 0 ?
+            <div>
+              <input className="shadow appearance-none w-11/12 border mb-12 rounded py-2 px-3 text-grey-darker" placeholder="Arama Yapın"/>
+              <div className="flex w-full h-full flex-wrap">
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+                <Card/>
+              </div>
+            </div>
+            :
+            <div>
+              <h4 className="text-lg mb-12 leading-6 font-medium text-gray-900">Profil Ayarları</h4>
+              <input className="shadow appearance-none w-11/12 border mb-12 rounded py-2 px-3 text-grey-darker" placeholder="Kullanıcı Adı"/>
+              <input className="shadow appearance-none w-11/12 border mb-12 rounded py-2 px-3 text-grey-darker" placeholder="Email Hesabı"/>
+              <input className="shadow appearance-none w-11/12 border mb-12 rounded py-2 px-3 text-grey-darker" placeholder="Profil Resmi URL"/>
+              <input className="shadow appearance-none w-11/12 border mb-12 rounded py-2 px-3 text-grey-darker" placeholder="Twitter Adresi"/>
+              <input className="shadow appearance-none w-11/12 border mb-12 rounded py-2 px-3 text-grey-darker" placeholder="GitHub Adresi"/>
+              <input className="shadow appearance-none w-11/12 border mb-12 rounded py-2 px-3 text-grey-darker" placeholder="Linkedin adresi"/>
+              <input className="shadow appearance-none w-11/12 border mb-12 rounded py-2 px-3 text-grey-darker" placeholder="Mevcut Şifreniz"/>
+              <input className="shadow appearance-none w-11/12 border mb-12 rounded py-2 px-3 text-grey-darker" placeholder="Yeni Şifre"/>
+              <p style={{borderRadius: '8rem'}} className="whitespace-no-wrap cursor-pointer mb-12 inline-flex w-11/12 items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
+                Kaydet
+              </p>
+            </div>
+          }
         </div>
       </div>
     </div>

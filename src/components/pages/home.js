@@ -101,7 +101,8 @@ const Home = props => {
           setPopup({type: 3, show: true})
         }
         else {
-          props.setUser({isLogged: true, token: userData.token, id: userData.user.id, username: userData.user.username})
+          console.log(userData);
+          props.setUser({isLogged: true, isLoading: false, data: userData})
           props.history.push('/dashboard')
         }
       }

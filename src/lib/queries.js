@@ -15,6 +15,10 @@ export const LOGIN_USER = `mutation loginUser($email: String!, $password: String
       username
       email
       isConfirmed
+      profileImg
+      twitterURL
+      GitHubURL
+      LinkedinURL
     }
   }
 }`;
@@ -31,6 +35,10 @@ export const USER_DETAILS = `query me {
     username
     email
     isConfirmed
+    profileImg
+    twitterURL
+    GitHubURL
+    LinkedinURL
   }
 }`
 

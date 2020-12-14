@@ -5,7 +5,8 @@ const user = (state = {}, action) => {
   const userData = action.payload;
   switch (action.type) {
     case SET_USER:
-      setValue('token', userData.token);
+      console.log(userData);
+      if(userData.data) setValue('token', userData.data.token);
       return action.payload;
     default:
       return state;
