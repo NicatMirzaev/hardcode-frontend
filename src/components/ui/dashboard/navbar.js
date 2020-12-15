@@ -3,10 +3,11 @@ import Logo from '../../../logo.png';
 import HomeIcon from '../../../icons/home.svg';
 import SearchIcon from '../../../icons/search.svg';
 import LeaderboardIcon from '../../../icons/leaderboard.svg';
-
+import ProfileIcon from '../../../icons/profile.png';
 
 const Navbar = props => {
   const [menu, setMenu] = React.useState(false);
+  const userData = props.user.data && props.user.data.user;
 
   React.useEffect(() => {
 
@@ -41,7 +42,7 @@ const Navbar = props => {
       </div>
     }
       <div className="flex mt-3 mb-16">
-        <img onClick={() => setMenu(!menu)} src="https://i.imgur.com/8Km9tLL.jpg" className="rounded-full border-solid border-white border-2 w-12 cursor-pointer"/>
+        {userData.profileImg.length <= 0 ? <img onClick={() => setMenu(!menu)} src={ProfileIcon} width="50" height="40" className="rounded-full border-solid border-white border-2 w-12 cursor-pointer"/> : <img onClick={() => setMenu(!menu)} src={userData.profileImg} width="48" height="48" className="rounded-full border-solid border-white border-2 w-12 cursor-pointer"/>}
       </div>
       <div className="flex flex-col mb-12">
         <img onClick={() => props.history.push('/dashboard')} className="mb-8 cursor-pointer" src={HomeIcon}/>

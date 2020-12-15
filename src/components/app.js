@@ -29,11 +29,9 @@ const App = props => {
       .then(data => {
         if(data.data) {
           const userData = data.data.me;
-          console.log(userData);
           if(userData)
           {
             if(userData.isConfirmed === true){
-              console.log(userData);
               props.setUser({isLogged: true, isLoading: false, data: {token: value, user: userData}})
             }
           }

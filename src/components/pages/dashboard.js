@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '../ui/dashboard/navbar';
+import Navbar from '../../redux/containers/navbar';
 import Card from '../ui/card';
 
 const Dashboard = props => {

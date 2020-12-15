@@ -19,6 +19,7 @@ export const LOGIN_USER = `mutation loginUser($email: String!, $password: String
       twitterURL
       GitHubURL
       LinkedinURL
+      createdAt
     }
   }
 }`;
@@ -39,6 +40,7 @@ export const USER_DETAILS = `query me {
     twitterURL
     GitHubURL
     LinkedinURL
+    createdAt
   }
 }`
 
@@ -52,4 +54,18 @@ export const RESET_PASSWORD = `mutation resetPassword($token: String!, $newPassw
 
 export const SUBSCRIBE_EMAIL = `mutation subscribeEmail($email: String!) {
   subscribeEmail(email: $email)
+}`;
+
+export const UPDATE_PROFILE = `mutation updateProfile($currentPassword: String!, $newPassword: String!, $Linkedin: String!, $gitHub: String!, $twitter: String!, $img: String!, $username: String!) {
+  updateProfile(currentPassword: $currentPassword, newPassword: $newPassword, LinkedinURL: $Linkedin, GitHubURL: $gitHub, TwitterURL: $twitter, ProfileImg: $img, username: $username) {
+      id
+      username
+      email
+      isConfirmed
+      profileImg
+      twitterURL
+      GitHubURL
+      LinkedinURL
+      createdAt
+  }
 }`;
