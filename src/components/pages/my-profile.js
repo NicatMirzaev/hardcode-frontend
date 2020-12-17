@@ -6,6 +6,7 @@ import LinkedinIcon from '../../icons/linkedin.svg';
 import ProfileIcon from '../../icons/profile.png';
 import Card from '../ui/card';
 import settings from '../../lib/settings.js';
+import { timestampToDate, calculatePercentage } from '../../lib/utils.js';
 import { UPDATE_PROFILE } from '../../lib/queries';
 import { getValue } from '../../lib/store.js';
 
@@ -42,13 +43,6 @@ const MyProfile = props => {
   if(props.user.isLogged === false) {
     setTimeout(() => props.history.push('/'), 250);
     return null;
-  }
-
-  const getRegisteredDate = timestamp => {
-    const day = new Date(Number(timestamp)).getDate();
-    const month = new Date(Number(timestamp)).getMonth() + 1;
-    const year = new Date(Number(timestamp)).getFullYear();
-    return day + "/" + month + "/" + year;
   }
 
   const updateProfile = () => {
@@ -108,11 +102,11 @@ const MyProfile = props => {
           {userData.profileImg.length <= 0 ? <img src={ProfileIcon} width="164" height="164" className="rounded-full border-solid border-white border-2 w-36 mb-4 cursor-pointer"/> : <img src={userData.profileImg} width="164" height="164" className="rounded-full border-solid border-white border-2 w-36 mb-4 cursor-pointer"/>}
           <h4 className="text-lg mb-4 leading-6 font-medium text-gray-900">{userData.username}</h4>
           <div className="flex flex-col mb-6">
-            <p className="self-start mb-1 text-sm text-gray-500">Kayıt Tarihi: {getRegisteredDate(userData.createdAt)}</p>
+            <p className="self-start mb-1 text-sm text-gray-500">Kayıt Tarihi: {timestampToDate(userData.createdAt)}</p>
             <p className="self-start mb-1 text-sm text-gray-500">Bitirilen Görevler: 89</p>
-            <p className="self-start mb-4 text-sm text-gray-500">Seviye: 4 (XP 2500 / 5000)</p>
+            <p className="self-start mb-4 text-sm text-gray-500">Seviye: {userData.level} (XP {userData.exp} / {userData.requiredExp})</p>
             <div className="mb-4" style={{width: '100%', backgroundColor: '#ddd', height: '10px'}}>
-              <div style={{width: '50%', backgroundColor: '#4CAF50', height: '10px'}}/>
+              <div style={{width: calculatePercentage(userData.exp, userData.requiredExp), backgroundColor: '#4CAF50', height: '10px'}}/>
             </div>
             <div className="flex">
               <a href={userData.twitterURL} target="_blank"><img src={TwitterIcon} className="mr-4" width="20" height="20"/></a>

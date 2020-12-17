@@ -19,6 +19,9 @@ export const LOGIN_USER = `mutation loginUser($email: String!, $password: String
       twitterURL
       GitHubURL
       LinkedinURL
+      level
+      exp
+      requiredExp
       createdAt
     }
   }
@@ -40,6 +43,9 @@ export const USER_DETAILS = `query me {
     twitterURL
     GitHubURL
     LinkedinURL
+    level
+    exp
+    requiredExp
     createdAt
   }
 }`
@@ -66,6 +72,9 @@ export const UPDATE_PROFILE = `mutation updateProfile($currentPassword: String!,
       twitterURL
       GitHubURL
       LinkedinURL
+      level
+      exp
+      requiredExp
       createdAt
   }
 }`;
