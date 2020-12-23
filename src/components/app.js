@@ -7,6 +7,7 @@ import ConfirmUser from './pages/confirm-user.js';
 import ResetPassword from './pages/reset-password.js';
 import MyProfile from '../redux/containers/my-profile';
 import Discover from '../redux/containers/discover';
+import Leaderboard from '../redux/containers/leaderboard';
 import settings from '../lib/settings';
 import { getValue } from '../lib/store.js';
 import { USER_DETAILS } from '../lib/queries';
@@ -54,6 +55,7 @@ const App = props => {
       <Route path="/reset-password/:token" component={ResetPassword}/>
       <Route path="/my-profile" component={MyProfile}/>
       <Route path="/discover" component={Discover}/>
+      <Route path="/leaderboard" component={Leaderboard}/>
     </Switch>
   )
 };

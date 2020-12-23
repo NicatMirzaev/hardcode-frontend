@@ -25,7 +25,7 @@ const Navbar = props => {
     }
 
   }, [menu])
-  
+
   return (
     <div style={{backgroundColor: '#323f4b'}} className="flex flex-col fixed items-center w-16 h-full">
     {menu === true &&
@@ -48,7 +48,7 @@ const Navbar = props => {
       <div className="flex flex-col mb-12">
         <img onClick={() => props.history.push('/dashboard')} className="mb-8 cursor-pointer" src={HomeIcon}/>
         <img onClick={() => props.history.push('/discover')} className="mb-8 cursor-pointer" src={SearchIcon}/>
-        <img className="cursor-pointer"src={LeaderboardIcon}/>
+        <img onClick={() => props.history.push('/leaderboard')} className="cursor-pointer"src={LeaderboardIcon}/>
       </div>
       <div className="flex flex-col">
         <div style={{backgroundColor: "#7b8794"}} className="w-10 h-10 mb-3 rounded-md overflow-hidden"/>
