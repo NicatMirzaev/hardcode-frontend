@@ -10,7 +10,7 @@ import Discover from '../redux/containers/discover';
 import Leaderboard from '../redux/containers/leaderboard';
 import settings from '../lib/settings';
 import { getValue } from '../lib/store.js';
-import { USER_DETAILS } from '../lib/queries';
+import { USER_DETAILS, GET_CATEGORIES} from '../lib/queries';
 
 const App = props => {
 

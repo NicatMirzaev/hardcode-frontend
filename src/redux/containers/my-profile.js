@@ -5,6 +5,7 @@ import * as CounterActions from '../actions';
 
 const mapStateToProps = state => ({
   user: state.user,
+  categories: state.categories
 });
 
 function mapDispatchToProps(dispatch) {

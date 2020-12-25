@@ -1,6 +1,9 @@
 import React from 'react';
 import Navbar from '../../redux/containers/navbar';
 import Card from '../ui/card';
+import settings from '../../lib/settings';
+import { getValue } from '../../lib/store.js';
+import { GET_CATEGORIES } from '../../lib/queries';
 
 const Discover = props => {
   const [menu, setMenu] = React.useState({show: false, chosen: 'Kategoriler'});
@@ -18,6 +21,28 @@ const Discover = props => {
     setTimeout(() => props.history.push('/'), 250);
     return null;
   }
+
+  React.useEffect(() => {
+    const value = getValue('token');
+    fetch(settings.apiURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ' + value
+      },
+      body: JSON.stringify({
+        query: GET_CATEGORIES
+      })
+    }).then(r => r.json())
+    .then(data => {
+      if(data.data) {
+        const categories = data.data.getCategories;
+        props.setCategories(categories);
+      }
+    })
+  }, [])
+
   return (
     <div className="flex w-full h-full">
       <div className="flex w-16">
@@ -28,7 +53,7 @@ const Discover = props => {
         <div className="w-1/2 mb-6 mx-auto">
           <span style={{top: "90px"}} className="absolute text-gray-700 flex items-center pl-2">
             <button type="submit" className="p-1 focus:outline-none focus:shadow-outline">
-              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+              <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" className="w-6 h-6"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             </button>
           </span>
           <input style={{borderRadius: '12rem'}} className="shadow appearance-none w-full border py-2 px-12 text-grey-darker" placeholder="Arama"/>
@@ -38,7 +63,7 @@ const Discover = props => {
           <button onClick={() => setMenu({show: !menu.show, chosen: menu.chosen})} type="button" className="inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="options-menu" aria-haspopup="true" aria-expanded="true">
             {menu.chosen}
             <svg className="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+              <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
             </svg>
           </button>
           {menu.show === true &&
@@ -54,10 +79,7 @@ const Discover = props => {
           }
         </div>
         <div className="flex flex-wrap mx-auto w-2/3">
-          <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
+          {props.categories.length && props.categories.map(category => <Card key={category.id} data={category}/>)}
         </div>
       </div>
     </div>

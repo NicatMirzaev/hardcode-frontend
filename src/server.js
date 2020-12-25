@@ -15,7 +15,7 @@ server
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
   .get('/*', (req, res) => {
 
-    const preloadedState = {user: {isLogged: false, isLoading: true}};
+    const preloadedState = {user: {isLogged: false, isLoading: true}, categories: {}};
 
     // Create a new Redux store instance
     const store = configureStore(preloadedState);

@@ -121,20 +121,15 @@ const MyProfile = props => {
         <div className="flex w-full flex-col">
           {content == 0 ?
             <div>
-              <input className="shadow appearance-none w-11/12 border mb-12 rounded py-2 px-3 text-grey-darker" placeholder="Arama Yapın"/>
+              <div className="md:w-2/3 mb-6">
+                <span className="search absolute text-gray-700 flex items-center pl-2">
+                  <button type="submit" className="p-1 focus:outline-none focus:shadow-outline">
+                    <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" className="w-6 h-6"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                  </button>
+                </span>
+                <input style={{borderRadius: '12rem'}} className="shadow appearance-none w-full border py-2 px-12 text-grey-darker" placeholder="Arama"/>
+              </div>
               <div className="flex w-full h-full flex-wrap">
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
               </div>
             </div>
             :

@@ -15,7 +15,14 @@ html, body, #root {
 .mt-card-container {
   margin-top: 0;
 }
-
+.search {
+  top: 133px;
+}
+@media screen and (max-width: 639px) {
+  .search {
+    top: 569px;
+  }
+}
 @media screen and (max-width: 930px) {
   .mt-card-container {
     margin-top: auto;

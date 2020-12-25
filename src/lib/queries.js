@@ -50,6 +50,16 @@ export const USER_DETAILS = `query me {
   }
 }`
 
+export const GET_CATEGORIES = `query getCategories {
+  getCategories {
+    id
+    name
+    image
+    views
+    likes
+  }
+}`
+
 export const FORGOT_PASSWORD = `mutation sendResetPasswordConfirmation($email: String!) {
   sendResetPasswordConfirmation(email: $email)
 }`;
