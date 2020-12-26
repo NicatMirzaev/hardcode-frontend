@@ -6,19 +6,8 @@ import { getValue } from '../../lib/store.js';
 import { GET_CATEGORIES } from '../../lib/queries';
 
 const Dashboard = props => {
-  if(props.user.isLoading === true) {
-    return (
-      <div className="w-full h-full flex justify-center">
-        <span className="text-green-500 opacity-75 top-1/2 my-0 block relative w-0 h-0 mb-24 mr-24" style={{top: '50%'}}>
-          <i className="fas fa-circle-notch fa-spin fa-5x"></i>
-        </span>
-      </div>
-    )
-  }
-  if(props.user.isLogged === false) {
-    setTimeout(() => props.history.push('/'), 250);
-    return null;
-  }
+  const [categories, setCategories] = React.useState({});
+
   React.useEffect(() => {
     const value = getValue('token');
     fetch(settings.apiURL, {
@@ -36,9 +25,40 @@ const Dashboard = props => {
       if(data.data) {
         const categories = data.data.getCategories;
         props.setCategories(categories);
+        setCategories(categories);
       }
     })
   }, [])
+
+  if(props.user.isLoading === true) {
+    return (
+      <div className="w-full h-full flex justify-center">
+        <span className="text-green-500 opacity-75 top-1/2 my-0 block relative w-0 h-0 mb-24 mr-24" style={{top: '50%'}}>
+          <i className="fas fa-circle-notch fa-spin fa-5x"></i>
+        </span>
+      </div>
+    )
+  }
+  if(props.user.isLogged === false) {
+    setTimeout(() => props.history.push('/'), 250);
+    return null;
+  }
+  const handleChange = e => {
+    const allCategories = props.categories;
+    const search = e.target.value;
+    if(search.length > 0) {
+      const filteredCategories = [];
+      for(let i = 0; i < allCategories.length; i++) {
+        if(allCategories[i].name.toLowerCase().includes(search.toLowerCase())) {
+          filteredCategories.push(allCategories[i]);
+        }
+      }
+      setCategories(filteredCategories);
+    }
+    else {
+      setCategories(allCategories);
+    }
+  }
   return (
     <div className="flex w-full h-full">
       <div className="flex sm:w-1/5 w-1/3">
@@ -52,11 +72,11 @@ const Dashboard = props => {
                 <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" className="w-6 h-6"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
               </button>
             </span>
-            <input style={{borderRadius: '12rem'}} className="shadow appearance-none w-full border py-2 px-12 text-grey-darker" placeholder="Arama"/>
+            <input onChange={e => handleChange(e)} style={{borderRadius: '12rem'}} className="shadow appearance-none w-full border py-2 px-12 text-grey-darker" placeholder="Arama"/>
           </div>
         </div>
         <div className="flex flex-wrap mx-auto">
-          {props.categories.length && props.categories.map(category => <Card key={category.id} data={category}/>)}
+          {categories.length && categories.map(category => <Card key={category.id} data={category}/>)}
         </div>
       </div>
     </div>
