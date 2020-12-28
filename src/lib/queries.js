@@ -20,6 +20,13 @@ export const LOGIN_USER = `mutation loginUser($email: String!, $password: String
       GitHubURL
       LinkedinURL
       level
+      likes {
+        id
+        name
+        image
+        views
+        likes
+      }
       exp
       requiredExp
       createdAt
@@ -45,6 +52,13 @@ export const USER_DETAILS = `query me {
     LinkedinURL
     level
     exp
+    likes {
+      id
+      name
+      image
+      views
+      likes
+    }
     requiredExp
     createdAt
   }
@@ -57,6 +71,7 @@ export const GET_CATEGORIES = `query getCategories {
     image
     views
     likes
+    isLiked
   }
 }`
 
@@ -84,7 +99,25 @@ export const UPDATE_PROFILE = `mutation updateProfile($currentPassword: String!,
       LinkedinURL
       level
       exp
+      likes {
+        id
+        name
+        image
+        views
+        likes
+      }
       requiredExp
       createdAt
+  }
+}`;
+
+export const LIKE_CATEGORY = `mutation likeCategory($categoryId: String!) {
+  likeCategory(categoryId: $categoryId) {
+    id
+    name
+    image
+    views
+    likes
+    isLiked
   }
 }`;
