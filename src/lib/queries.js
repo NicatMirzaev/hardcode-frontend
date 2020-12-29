@@ -26,6 +26,7 @@ export const LOGIN_USER = `mutation loginUser($email: String!, $password: String
         image
         views
         likes
+        isLiked
       }
       exp
       requiredExp
@@ -58,6 +59,7 @@ export const USER_DETAILS = `query me {
       image
       views
       likes
+      isLiked
     }
     requiredExp
     createdAt
@@ -105,6 +107,7 @@ export const UPDATE_PROFILE = `mutation updateProfile($currentPassword: String!,
         image
         views
         likes
+        isLiked
       }
       requiredExp
       createdAt

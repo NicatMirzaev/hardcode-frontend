@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '../../redux/containers/navbar';
-import Card from '../ui/card';
+import Card from '../../redux/containers/card';
 import settings from '../../lib/settings';
 import { getValue } from '../../lib/store.js';
 import { GET_CATEGORIES } from '../../lib/queries';

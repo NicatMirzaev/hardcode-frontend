@@ -5,7 +5,7 @@ import HeartRedIcon from '../../icons/heart_red.svg';
 import { abbreviateNumber } from '../../lib/utils';
 import settings from '../../lib/settings';
 import { getValue } from '../../lib/store.js';
-import { LIKE_CATEGORY } from '../../lib/queries';
+import { LIKE_CATEGORY, USER_DETAILS } from '../../lib/queries';
 
 const Card = props => {
   const [data, setData] = React.useState({});
@@ -14,23 +14,53 @@ const Card = props => {
     setData(props.data);
   }, [])
 
-  const onClickLike = () => {
+  const onClickLike = async () => {
     const value = getValue('token');
-    fetch(settings.apiURL, {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Authorization': 'Bearer ' + value
-      },
-      body: JSON.stringify({
-        query: LIKE_CATEGORY,
-        variables: { categoryId: data.id }
-      })
+    if(value) {
+
+      let response = await fetch(settings.apiURL, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + value
+        },
+        body: JSON.stringify({
+          query: LIKE_CATEGORY,
+          variables: { categoryId: data.id }
+        })
+      });
+      response = await response.json();
+      setData(response.data.likeCategory);
+
+      fetch(settings.apiURL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + value
+        },
+        body: JSON.stringify({
+          query: USER_DETAILS
+        })
     }).then(r => r.json())
-    .then(data => {
-      setData(data.data.likeCategory);
-    })
+      .then(data => {
+        if(data.data) {
+          const userData = data.data.me;
+          if(userData)
+          {
+            if(userData.isConfirmed === true){
+              props.setUser({isLogged: true, isLoading: false, data: {token: value, user: userData}})
+            }
+          }
+          else props.setUser({isLogged: false, isLoading: false})
+        }
+        else {
+          props.setUser({isLogged: false, isLoading: false})
+        }
+      });
+
+    }
   }
   return (
     <div style={{maxWidth: '224px', maxHeight: '322px', minWidth: '224px', minHeight: '322px'}} className="flex flex-col sm:w-56 w-52 mr-6 rounded overflow-hidden shadow-lg mb-12">

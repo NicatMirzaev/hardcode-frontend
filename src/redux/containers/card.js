@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import MyProfile from '../../components/pages/my-profile';
+import Card from '../../components/ui/card';
 import * as CounterActions from '../actions';
 
 const mapStateToProps = state => ({
@@ -12,4 +12,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(CounterActions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MyProfile);
+export default connect(mapStateToProps, mapDispatchToProps)(Card);

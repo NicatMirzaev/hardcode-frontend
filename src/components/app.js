@@ -5,7 +5,7 @@ import Dashboard from '../redux/containers/dashboard';
 import '../css/tailwind.output.css';
 import ConfirmUser from './pages/confirm-user.js';
 import ResetPassword from './pages/reset-password.js';
-import MyProfile from '../redux/containers/my-profile';
+import Profile from '../redux/containers/profile';
 import Discover from '../redux/containers/discover';
 import Leaderboard from '../redux/containers/leaderboard';
 import settings from '../lib/settings';
@@ -53,7 +53,7 @@ const App = props => {
       <Route exact path="/dashboard" component={Dashboard}/>
       <Route path="/confirm/:token" component={ConfirmUser}/>
       <Route path="/reset-password/:token" component={ResetPassword}/>
-      <Route path="/my-profile" component={MyProfile}/>
+      <Route path="/profile" component={Profile}/>
       <Route path="/discover" component={Discover}/>
       <Route path="/leaderboard" component={Leaderboard}/>
     </Switch>

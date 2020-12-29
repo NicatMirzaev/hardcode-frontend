@@ -4,14 +4,15 @@ import TwitterIcon from '../../icons/twitter.png';
 import GithubIcon from '../../icons/github.svg';
 import LinkedinIcon from '../../icons/linkedin.svg';
 import ProfileIcon from '../../icons/profile.png';
-import Card from '../ui/card';
+import Card from '../../redux/containers/card';
 import settings from '../../lib/settings.js';
 import { timestampToDate, calculatePercentage } from '../../lib/utils.js';
 import { UPDATE_PROFILE } from '../../lib/queries';
 import { getValue } from '../../lib/store.js';
 
-const MyProfile = props => {
+const Profile = props => {
   const [content, setContent] = React.useState(0);
+  const [categories, setCategories] = React.useState({});
   const userData = props.user.data && props.user.data.user;
 
   React.useEffect(() => {
@@ -20,6 +21,7 @@ const MyProfile = props => {
     setTwitter(userData === undefined ? "" : userData.twitterURL);
     setGitHub(userData === undefined ? "" : userData.GitHubURL);
     setLinkedin(userData === undefined ? "" : userData.LinkedinURL);
+    setCategories(userData === undefined ? {} : userData.likes);
   }, [props])
 
   const [username, setUsername] = React.useState("");
@@ -91,7 +93,19 @@ const MyProfile = props => {
       }
     }
   }
-
+  const handleChange = e => {
+    const value = e.target.value;
+    if(value.length > 0) {
+      const filter = [];
+      for(let i = 0; i < userData.likes.length; i++) {
+        if(userData.likes[i].name.toLowerCase().includes(value.toLowerCase())) {
+          filter.push(userData.likes[i]);
+        }
+      }
+      setCategories(filter);
+    }
+    else setCategories(userData.likes);
+  }
   return (
     <div className="flex w-full h-full">
       <div className="flex md:w-1/5 sm:w-1/4 w-1/3">
@@ -121,15 +135,16 @@ const MyProfile = props => {
         <div className="flex w-full flex-col">
           {content == 0 ?
             <div>
-              <div className="md:w-2/3 mb-6">
+              <div className="md:w-2/3 mb-12">
                 <span className="search absolute text-gray-700 flex items-center pl-2">
                   <button type="submit" className="p-1 focus:outline-none focus:shadow-outline">
                     <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" className="w-6 h-6"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                   </button>
                 </span>
-                <input style={{borderRadius: '12rem'}} className="shadow appearance-none w-full border py-2 px-12 text-grey-darker" placeholder="Arama"/>
+                <input onChange={e => handleChange(e)} style={{borderRadius: '12rem'}} className="shadow appearance-none w-full border py-2 px-12 text-grey-darker" placeholder="Arama"/>
               </div>
               <div className="flex w-full h-full flex-wrap">
+                {categories.length > 0 ? categories.map(category => <Card key={category.id} data={category}/>) : null}
               </div>
             </div>
             :
@@ -154,4 +169,4 @@ const MyProfile = props => {
   )
 }
 
-export default MyProfile;
+export default Profile;

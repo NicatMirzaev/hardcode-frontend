@@ -35,7 +35,7 @@ const Navbar = props => {
           <div style={{width: '100%', backgroundColor: '#ddd', height: '10px'}}>
             <div style={{width: calculatePercentage(userData.exp, userData.requiredExp), backgroundColor: '#4CAF50', height: '10px'}}/>
           </div>
-          <p onClick={() => props.history.push('/my-profile')} className="block cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Profil</p>
+          <p onClick={() => props.history.push('/profile')} className="block cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Profil</p>
           <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" role="menuitem">
               Çıkış Yap
           </button>
@@ -51,10 +51,7 @@ const Navbar = props => {
         <img onClick={() => props.history.push('/leaderboard')} className="cursor-pointer"src={LeaderboardIcon}/>
       </div>
       <div className="flex flex-col">
-        <div style={{backgroundColor: "#7b8794"}} className="w-10 h-10 mb-3 rounded-md overflow-hidden"/>
-        <div style={{backgroundColor: "#7b8794"}} className="w-10 h-10 mb-3 rounded-md overflow-hidden"/>
-        <div style={{backgroundColor: "#7b8794"}} className="w-10 h-10 mb-3 rounded-md overflow-hidden"/>
-        <div style={{backgroundColor: "#7b8794"}} className="w-10 h-10 mb-3 rounded-md overflow-hidden"/>
+        {userData.likes.map(category => <div key={category.id} style={{backgroundImage: `url(${category.image})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center'}} className="w-10 h-10 mb-3 rounded-md overflow-hidden cursor-pointer"/>)}
       </div>
     </div>
   )
