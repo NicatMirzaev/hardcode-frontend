@@ -5,6 +5,7 @@ import SearchIcon from '../../../icons/search.svg';
 import LeaderboardIcon from '../../../icons/leaderboard.svg';
 import ProfileIcon from '../../../icons/profile.png';
 import { calculatePercentage } from '../../../lib/utils';
+import { removeValue } from '../../../lib/store';
 
 const Navbar = props => {
   const [menu, setMenu] = React.useState(false);
@@ -26,6 +27,11 @@ const Navbar = props => {
 
   }, [menu])
 
+  const handleLogout = () => {
+    removeValue('token');
+    props.setUser({isLogged: false, isLoading: false})
+    props.history.push('/')
+  }
   return (
     <div style={{backgroundColor: '#323f4b'}} className="flex flex-col fixed items-center w-16 h-full">
     {menu === true &&
@@ -35,8 +41,8 @@ const Navbar = props => {
           <div style={{width: '100%', backgroundColor: '#ddd', height: '10px'}}>
             <div style={{width: calculatePercentage(userData.exp, userData.requiredExp), backgroundColor: '#4CAF50', height: '10px'}}/>
           </div>
-          <p onClick={() => props.history.push('/profile')} className="block cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Profil</p>
-          <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" role="menuitem">
+          <p onClick={() => props.history.push(`/profile/${userData.id}`)} className="block cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Profil</p>
+          <button onClick={handleLogout} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" role="menuitem">
               Çıkış Yap
           </button>
         </div>

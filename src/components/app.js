@@ -53,7 +53,7 @@ const App = props => {
       <Route exact path="/dashboard" component={Dashboard}/>
       <Route path="/confirm/:token" component={ConfirmUser}/>
       <Route path="/reset-password/:token" component={ResetPassword}/>
-      <Route path="/profile" component={Profile}/>
+      <Route path="/profile/:id" component={Profile}/>
       <Route path="/discover" component={Discover}/>
       <Route path="/leaderboard" component={Leaderboard}/>
     </Switch>

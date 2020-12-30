@@ -66,6 +66,31 @@ export const USER_DETAILS = `query me {
   }
 }`
 
+export const FETCH_USER = `query user($id: String!) {
+  user(id: $id) {
+    id
+    username
+    email
+    isConfirmed
+    profileImg
+    twitterURL
+    GitHubURL
+    LinkedinURL
+    level
+    exp
+    likes {
+      id
+      name
+      image
+      views
+      likes
+      isLiked
+    }
+    requiredExp
+    createdAt
+  }
+}`
+
 export const GET_CATEGORIES = `query getCategories {
   getCategories {
     id
