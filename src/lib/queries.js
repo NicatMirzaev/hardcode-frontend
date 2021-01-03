@@ -91,6 +91,17 @@ export const FETCH_USER = `query user($id: String!) {
   }
 }`
 
+export const FETCH_LEADERBOARD = `query getLeaderboard {
+  getLeaderboard {
+    id
+    username
+    profileImg
+    level
+    exp
+    createdAt
+  }
+}`
+
 export const GET_CATEGORIES = `query getCategories {
   getCategories {
     id
