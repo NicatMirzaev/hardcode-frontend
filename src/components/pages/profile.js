@@ -177,7 +177,7 @@ const Profile = props => {
           <h4 className="text-lg mb-4 leading-6 font-medium text-gray-900">{data.username}</h4>
           <div className="flex flex-col mb-6">
             <p className="self-start mb-1 text-sm text-gray-500">Kayıt Tarihi: {timestampToDate(data.createdAt)}</p>
-            <p className="self-start mb-1 text-sm text-gray-500">Bitirilen Görevler: 89</p>
+            <p className="self-start mb-1 text-sm text-gray-500">Bitirilen Görevler: {data.completedTasks}</p>
             <p className="self-start mb-4 text-sm text-gray-500">Seviye: {data.level} (XP {data.exp} / {data.requiredExp})</p>
             <div className="mb-4" style={{width: '100%', backgroundColor: '#ddd', height: '10px'}}>
               <div style={{width: calculatePercentage(data.exp, data.requiredExp), backgroundColor: '#4CAF50', height: '10px'}}/>

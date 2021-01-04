@@ -30,6 +30,7 @@ export const LOGIN_USER = `mutation loginUser($email: String!, $password: String
       }
       exp
       requiredExp
+      completedTasks
       createdAt
     }
   }
@@ -62,6 +63,7 @@ export const USER_DETAILS = `query me {
       isLiked
     }
     requiredExp
+    completedTasks
     createdAt
   }
 }`
@@ -87,6 +89,7 @@ export const FETCH_USER = `query user($id: String!) {
       isLiked
     }
     requiredExp
+    completedTasks
     createdAt
   }
 }`
@@ -146,6 +149,7 @@ export const UPDATE_PROFILE = `mutation updateProfile($currentPassword: String!,
         isLiked
       }
       requiredExp
+      completedTasks
       createdAt
   }
 }`;

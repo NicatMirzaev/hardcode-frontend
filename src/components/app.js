@@ -8,6 +8,7 @@ import ResetPassword from './pages/reset-password.js';
 import Profile from '../redux/containers/profile';
 import Discover from '../redux/containers/discover';
 import Leaderboard from '../redux/containers/leaderboard';
+import Category from '../redux/containers/category';
 import settings from '../lib/settings';
 import { getValue } from '../lib/store.js';
 import { USER_DETAILS, GET_CATEGORIES} from '../lib/queries';
@@ -56,6 +57,7 @@ const App = props => {
       <Route path="/profile/:id" component={Profile}/>
       <Route path="/discover" component={Discover}/>
       <Route path="/leaderboard" component={Leaderboard}/>
+      <Route path="/category/:id" component={Category}/>
     </Switch>
   )
 };
