@@ -105,6 +105,27 @@ export const FETCH_LEADERBOARD = `query getLeaderboard {
   }
 }`
 
+export const FETCH_TASKS = `query getTasks($categoryId: String!) {
+  getTasks(categoryId: $categoryId) {
+    category {
+      id
+      name
+      image
+      views
+      likes
+      isLiked
+    }
+    tasks {
+      id
+      categoryId
+      name
+      difficulty
+      solvedCount
+      step
+    }
+  }
+}`
+
 export const GET_CATEGORIES = `query getCategories {
   getCategories {
     id

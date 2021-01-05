@@ -79,7 +79,7 @@ const Discover = props => {
           }
         </div>
         <div className="flex flex-wrap mx-auto w-2/3">
-          {props.categories.length && props.categories.map(category => <Card key={category.id} data={category}/>)}
+          {props.categories.length && props.categories.map(category => <Card history={props.history} key={category.id} data={category}/>)}
         </div>
       </div>
     </div>

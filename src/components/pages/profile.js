@@ -206,7 +206,7 @@ const Profile = props => {
                 <input onChange={e => handleChange(e)} style={{borderRadius: '12rem'}} className="shadow appearance-none w-full border py-2 px-12 text-grey-darker" placeholder="Arama"/>
               </div>
               <div className="flex w-full h-full flex-wrap">
-                {categories.length > 0 ? categories.map(category => <Card key={category.id} data={category}/>) : null}
+                {categories.length > 0 ? categories.map(category => <Card history={props.history} key={category.id} data={category}/>) : null}
               </div>
             </div>
             :

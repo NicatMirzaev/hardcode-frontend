@@ -63,7 +63,7 @@ const Card = props => {
     }
   }
   return (
-    <div style={{maxWidth: '224px', maxHeight: '322px', minWidth: '224px', minHeight: '322px'}} className="flex flex-col sm:w-56 w-52 mr-6 rounded overflow-hidden shadow-lg mb-12">
+    <div onClick={() => props.history.push(`/category/${data.id}`)} style={{maxWidth: '224px', maxHeight: '322px', minWidth: '224px', minHeight: '322px'}} className="flex flex-col sm:w-56 w-52 mr-6 rounded overflow-hidden shadow-lg mb-12 cursor-pointer">
       <img style={{maxWidth: '224px', maxHeight: '84px', minWidth: '224px', minHeight: '84px'}} className="mb-6" src={data.image}/>
       <h4 className="text-lg text-center leading-6 font-medium text-gray-900 mb-6">{data.name}</h4>
       <div className="flex ml-6 mb-2">

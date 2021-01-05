@@ -1,16 +1,28 @@
 import React from 'react';
 
 const TaskCard = props => {
+  const data = props.data;
+  let difficultyColor;
+  switch(data.difficulty) {
+    case 'Kolay':
+      difficultyColor = "#1ba94c";
+      break;
+    case 'Orta':
+      difficultyColor = "#ff9900";
+      break;
+    default:
+      difficultyColor = "#ff0000";
+  }
   return (
     <div className="flex items-center justify-between rounded shadow-lg">
       <div className="flex flex-col p-6">
-        <span style={{fontFamily: 'OpenSans, Arial, Helvetica, sans-serif', fontWeight: 400, fontStyle: 'normal', fontSize: '21px', color: '1ba94c'}}>Hello World!</span>
+        <span style={{fontFamily: 'OpenSans, Arial, Helvetica, sans-serif', fontWeight: 400, fontStyle: 'normal', fontSize: '21px', color: '1ba94c'}}>{data.name}</span>
         <div className="flex items-center">
           <span style={{fontFamily: 'OpenSans, Arial, Helvetica, sans-serif', fontWeight: 400, fontStyle: 'normal', fontSize: '12px', color: '#738f93', marginRight: '0.25rem'}}>Zorluk: </span>
-          <span style={{fontFamily: 'OpenSans, Arial, Helvetica, sans-serif', fontWeight: 400, fontStyle: 'normal', fontSize: '12px', color: '#1ba94c', marginRight: '0.30rem'}}>Kolay,</span>
+          <span style={{fontFamily: 'OpenSans, Arial, Helvetica, sans-serif', fontWeight: 400, fontStyle: 'normal', fontSize: '12px', color: difficultyColor, marginRight: '0.30rem'}}>{data.difficulty},</span>
           <span style={{fontFamily: 'OpenSans, Arial, Helvetica, sans-serif', fontWeight: 400, fontStyle: 'normal', fontSize: '12px', color: '#738f93', marginRight: '0.25rem'}}>Kategori: </span>
           <span style={{fontFamily: 'OpenSans, Arial, Helvetica, sans-serif', fontWeight: 400, fontStyle: 'normal', fontSize: '12px', color: '#738f93', marginRight: '0.30rem'}}>Javascript (Başlangıç),</span>
-          <span style={{fontFamily: 'OpenSans, Arial, Helvetica, sans-serif', fontWeight: 400, fontStyle: 'normal', fontSize: '12px', color: '#738f93'}}>Çözülme Sayısı: 25</span>
+          <span style={{fontFamily: 'OpenSans, Arial, Helvetica, sans-serif', fontWeight: 400, fontStyle: 'normal', fontSize: '12px', color: '#738f93'}}>Çözülme Sayısı: {data.solvedCount}</span>
         </div>
       </div>
       <div className="w-1/5 pt-4 pr-6">

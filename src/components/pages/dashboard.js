@@ -76,7 +76,7 @@ const Dashboard = props => {
           </div>
         </div>
         <div className="flex flex-wrap mx-auto">
-          {categories.length > 0 && categories.map(category => <Card key={category.id} data={category}/>)}
+          {categories.length > 0 && categories.map(category => <Card history={props.history} key={category.id} data={category}/>)}
         </div>
       </div>
     </div>
