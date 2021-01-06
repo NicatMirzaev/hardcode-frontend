@@ -57,7 +57,7 @@ const Navbar = props => {
         <img onClick={() => props.history.push('/leaderboard')} className="cursor-pointer"src={LeaderboardIcon}/>
       </div>
       <div className="flex flex-col">
-        {userData.likes.map(category => <div key={category.id} style={{backgroundImage: `url(${category.image})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center'}} className="w-10 h-10 mb-3 rounded-md overflow-hidden cursor-pointer"/>)}
+        {userData.likes.map(category => <div onClick={() => props.history.push(`/category/${category.id}`)} key={category.id} style={{backgroundImage: `url(${category.image})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center'}} className="w-10 h-10 mb-3 rounded-md overflow-hidden cursor-pointer"/>)}
       </div>
     </div>
   )

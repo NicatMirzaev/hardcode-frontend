@@ -122,8 +122,8 @@ const Leaderboard = props => {
               <span className="text-base font-bold sm:mb-0 mb-4 mr-4">{index + 4}.</span>
               {user.profileImg.length > 0 ? <img width="64" height="64" className="rounded-full mr-2 sm:mb-0 mb-4" src={user.profileImg}/> : <img width="64" height="64" className="mb-4 mt-6 rounded-full" src={ProfileIcon}/>}
               <div style={{backgroundColor: '#EAA786', borderRadius: '4rem'}} className="flex sm:flex-row flex-col sm:justify-between items-center sm:w-full w-10/12 h-12">
-                <span className="text-base pl-4 font-bold">{user.username}</span>
-                <span className="text-base pr-4">Seviye {user.level}</span>
+                <span className="text-base sm:pl-4 pl-0 font-bold">{user.username}</span>
+                <span className="text-base sm:pl-4 pl-0">Seviye {user.level}</span>
               </div>
             </div>
           )

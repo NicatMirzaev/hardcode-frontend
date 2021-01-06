@@ -50,7 +50,7 @@ const Discover = props => {
       </div>
       <div className="flex flex-col mt-6 w-full">
         <h2 className="text-2xl tracking-tight mx-auto mb-6 leading-10 font-extrabold text-gray-900 sm:text-3xl sm:leading-none md:text-4xl">HardCode'u Keşfet!</h2>
-        <div className="w-1/2 mb-6 mx-auto">
+        <div className="sm:w-1/2 w-full pl-6 pr-3 mb-6 mx-auto">
           <span style={{top: "90px"}} className="absolute text-gray-700 flex items-center pl-2">
             <button type="submit" className="p-1 focus:outline-none focus:shadow-outline">
               <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" className="w-6 h-6"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
@@ -78,7 +78,7 @@ const Discover = props => {
             </div>
           }
         </div>
-        <div className="flex flex-wrap mx-auto w-2/3">
+        <div className="flex flex-wrap sm:mx-auto pl-6 sm:pl-0 w-2/3">
           {props.categories.length && props.categories.map(category => <Card history={props.history} key={category.id} data={category}/>)}
         </div>
       </div>

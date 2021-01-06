@@ -121,6 +121,7 @@ export const FETCH_TASKS = `query getTasks($categoryId: String!) {
       name
       difficulty
       solvedCount
+      isSolved
       step
     }
   }
