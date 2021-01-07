@@ -1,12 +1,17 @@
 import React from 'react';
 import Navbar from '../../redux/containers/navbar';
 import Card from '../../redux/containers/card';
+import TaskCard from '../ui/task-card';
+import ProfileIcon from '../../icons/profile.png';
 import settings from '../../lib/settings';
 import { getValue } from '../../lib/store.js';
-import { GET_CATEGORIES } from '../../lib/queries';
+import { GET_CATEGORIES, FETCH_ALL_USERS, FETCH_ALL_TASKS } from '../../lib/queries';
 
 const Discover = props => {
   const [menu, setMenu] = React.useState({show: false, chosen: 'Kategoriler'});
+  const [filter, setFilter] = React.useState('');
+  const [data, setData] = React.useState({});
+  const [filteredData, setFilteredData] = React.useState({});
 
   React.useEffect(() => {
     const value = getValue('token');
@@ -24,10 +29,11 @@ const Discover = props => {
     .then(data => {
       if(data.data) {
         const categories = data.data.getCategories;
-        props.setCategories(categories);
+        setData(categories);
+        setFilteredData(categories);
       }
     })
-  }, [])
+  }, [props])
 
   if(props.user.isLoading === true) {
     return (
@@ -43,6 +49,166 @@ const Discover = props => {
     return null;
   }
 
+  const handleChange = chosen => {
+    const value = getValue("token");
+    if(chosen == "Kategoriler" && value) {
+      setData({});
+      setFilteredData({});
+      fetch(settings.apiURL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + value
+        },
+        body: JSON.stringify({
+          query: GET_CATEGORIES
+        })
+      }).then(r => r.json())
+      .then(data => {
+        if(data.data) {
+          const categories = data.data.getCategories;
+          setData(categories);
+          if(filter.length > 0) {
+            let filtered = [];
+            for(let i = 0; i < categories.length; i++) {
+              if(categories[i].name.toLowerCase().includes(filter.toLowerCase())) {
+                filtered.push(categories[i]);
+              }
+            }
+            setFilteredData(filtered);
+          }
+          else setFilteredData(categories);
+        }
+      })
+    }
+    else if(chosen == "Üyeler" && value) {
+      setData({});
+      setFilteredData({});
+      fetch(settings.apiURL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + value
+        },
+        body: JSON.stringify({
+          query: FETCH_ALL_USERS
+        })
+      }).then(r => r.json())
+      .then(data => {
+        if(data.data) {
+          const users = data.data.getAllUsers;
+          setData(users);
+          if(filter.length > 0) {
+            let filtered = [];
+            for(let i = 0; i < users.length; i++) {
+              if(users[i].username.toLowerCase().includes(filter.toLowerCase())) {
+                filtered.push(users[i]);
+              }
+            }
+            setFilteredData(filtered);
+          }
+          else setFilteredData(users);
+        }
+      })
+    }
+    else if(chosen == "Görevler" && value) {
+      setData({});
+      setFilteredData({});
+      fetch(settings.apiURL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + value
+        },
+        body: JSON.stringify({
+          query: FETCH_ALL_TASKS
+        })
+      }).then(r => r.json())
+      .then(data => {
+        if(data.data) {
+          const tasks = data.data.getAllTasks;
+          setData(tasks);
+          if(filter.length > 0) {
+            let filtered = [];
+            for(let i = 0; i < tasks.length; i++) {
+              if(tasks[i].name.toLowerCase().includes(filter.toLowerCase())) {
+                filtered.push(tasks[i]);
+              }
+            }
+            setFilteredData(filtered);
+          }
+          else setFilteredData(tasks);
+        }
+      })
+    }
+    setMenu({show: false, chosen: chosen});
+  }
+
+  const renderContent = () => {
+    if(menu.chosen == "Kategoriler") {
+      return (
+        <div className="flex flex-wrap sm:mx-auto pl-6 sm:pl-0 w-2/3">
+          {filteredData.length > 0 && filteredData.map(data => <Card key={data.id} history={props.history} data={data}/>)}
+        </div>
+      )
+    }
+    else if(menu.chosen == "Üyeler") {
+      return (
+        <div className="flex sm:mx-auto sm:w-1/2 w-full flex-col">
+          {filteredData.length > 0 && filteredData.slice(0, 20).map(data => (
+            <div onClick={() => props.history.push(`/profile/${data.id}`)} key={data.id} className="flex cursor-pointer sm:flex-row flex-col justify-center mb-6 items-center w-full">
+              {data.profileImg.length > 0 ? <img width="64" height="64" className="rounded-full mr-2 sm:mb-0 mb-4" src={data.profileImg}/> : <img width="64" height="64" className="mb-4 mt-6 rounded-full" src={ProfileIcon}/>}
+              <div style={{backgroundColor: '#EAA786', borderRadius: '4rem'}} className="flex sm:flex-row flex-col sm:justify-between items-center sm:w-full w-10/12 h-12">
+                <span className="text-base sm:pl-4 pl-0 font-bold">{data.username}</span>
+                <span className="text-base sm:pr-4 pr-0">Seviye {data.level}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      )
+    }
+    else if(menu.chosen == "Görevler") {
+      return (
+        <div className="flex flex-col mx-auto h-full w-11/12">
+          {filteredData.length > 0 && filteredData.slice(0, 20).map(task => <TaskCard key={task.id} data={task}/>)}
+        </div>
+      )
+    }
+  }
+
+  const handleInputChange = e => {
+    const filter = e.target.value;
+    setFilter(filter);
+    if(filter.length > 0) {
+      let filtered = [];
+      if(menu.chosen == "Kategoriler") {
+        for(let i = 0; i < data.length; i++) {
+          if(data[i].name.toLowerCase().includes(filter.toLowerCase())) {
+            filtered.push(data[i]);
+          }
+        }
+      }
+      else if(menu.chosen == "Üyeler") {
+        for(let i = 0; i < data.length; i++) {
+          if(data[i].username.toLowerCase().includes(filter.toLowerCase())) {
+            filtered.push(data[i]);
+          }
+        }
+      }
+      else if(menu.chosen == "Görevler") {
+        for(let i = 0; i < data.length; i++) {
+          if(data[i].name.toLowerCase().includes(filter.toLowerCase())) {
+            filtered.push(data[i]);
+          }
+        }
+      }
+      setFilteredData(filtered);
+    }
+    else setFilteredData(data);
+  }
   return (
     <div className="flex w-full h-full">
       <div className="flex w-16">
@@ -56,7 +222,7 @@ const Discover = props => {
               <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" className="w-6 h-6"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             </button>
           </span>
-          <input style={{borderRadius: '12rem'}} className="shadow appearance-none w-full border py-2 px-12 text-grey-darker" placeholder="Arama"/>
+          <input onChange={e => handleInputChange(e)} style={{borderRadius: '12rem'}} className="shadow appearance-none w-full border py-2 px-12 text-grey-darker" placeholder="Arama"/>
         </div>
         <div className="flex justify-center mb-16 items-center w-1/2 mx-auto">
           <span className="text-gray-500 font-bold mr-6">Filtrele</span>
@@ -70,17 +236,15 @@ const Discover = props => {
             <div style={{top: '183px'}} className="absolute mt-2 w-56 rounded-md shadow-lg">
               <div className="rounded-md bg-white shadow-xs">
                 <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-                  <p onClick={() => setMenu({show: false, chosen: 'Kategoriler'})} className="block cursor-pointer px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" role="menuitem">Kategoriler</p>
-                  <p onClick={() => setMenu({show: false, chosen: 'Üyeler'})} className="block cursor-pointer px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" role="menuitem">Üyeler</p>
-                  <p onClick={() => setMenu({show: false, chosen: 'Görevler'})} className="block cursor-pointer px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" role="menuitem">Görevler</p>
+                  <p onClick={() => handleChange('Kategoriler')} className="block cursor-pointer px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" role="menuitem">Kategoriler</p>
+                  <p onClick={() => handleChange('Üyeler')} className="block cursor-pointer px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" role="menuitem">Üyeler</p>
+                  <p onClick={() => handleChange('Görevler')} className="block cursor-pointer px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" role="menuitem">Görevler</p>
                 </div>
               </div>
             </div>
           }
         </div>
-        <div className="flex flex-wrap sm:mx-auto pl-6 sm:pl-0 w-2/3">
-          {props.categories.length && props.categories.map(category => <Card history={props.history} key={category.id} data={category}/>)}
-        </div>
+        {renderContent()}
       </div>
     </div>
   )

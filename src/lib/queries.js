@@ -94,6 +94,21 @@ export const FETCH_USER = `query user($id: String!) {
   }
 }`
 
+export const FETCH_ALL_USERS = `query getAllUsers {
+  getAllUsers {
+    id
+    username
+    profileImg
+    twitterURL
+    GitHubURL
+    LinkedinURL
+    level
+    exp
+    completedTasks
+    createdAt
+  }
+}`
+
 export const FETCH_LEADERBOARD = `query getLeaderboard {
   getLeaderboard {
     id
@@ -124,6 +139,18 @@ export const FETCH_TASKS = `query getTasks($categoryId: String!) {
       isSolved
       step
     }
+  }
+}`
+
+export const FETCH_ALL_TASKS = `query getAllTasks {
+  getAllTasks {
+      id
+      categoryId
+      name
+      difficulty
+      solvedCount
+      isSolved
+      step
   }
 }`
 

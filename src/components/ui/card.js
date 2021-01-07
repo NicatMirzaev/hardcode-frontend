@@ -63,9 +63,9 @@ const Card = props => {
     }
   }
   return (
-    <div onClick={() => props.history.push(`/category/${data.id}`)} style={{maxWidth: '224px', maxHeight: '322px', minWidth: '224px', minHeight: '322px'}} className="flex flex-col sm:w-56 w-52 mr-6 rounded overflow-hidden shadow-lg mb-12 cursor-pointer">
-      <img style={{maxWidth: '224px', maxHeight: '84px', minWidth: '224px', minHeight: '84px'}} className="mb-6" src={data.image}/>
-      <h4 className="text-lg text-center leading-6 font-medium text-gray-900 mb-6">{data.name}</h4>
+    <div style={{maxWidth: '224px', maxHeight: '322px', minWidth: '224px', minHeight: '322px'}} className="flex flex-col sm:w-56 w-52 mr-6 rounded overflow-hidden shadow-lg mb-12">
+      <img onClick={() => props.history.push(`/category/${data.id}`)} style={{maxWidth: '224px', maxHeight: '84px', minWidth: '224px', minHeight: '84px'}} className="cursor-pointer mb-6" src={data.image}/>
+      <h4 onClick={() => props.history.push(`/category/${data.id}`)} className="cursor-pointer text-lg text-center leading-6 font-medium text-gray-900 mb-6">{data.name}</h4>
       <div className="flex ml-6 mb-2">
         <img className="mr-2" src={EyeIcon}/>
         <p className="text-sm leading-6 text-gray-500">{abbreviateNumber(data.views)} görüntüleme</p>
@@ -74,9 +74,9 @@ const Card = props => {
         {data.isLiked === true ? <img onClick={onClickLike} className="mr-2 cursor-pointer" src={HeartRedIcon}/> : <img onClick={onClickLike} className="mr-2 cursor-pointer" src={HeartIcon}/>}
         <p className="text-sm leading-6 text-gray-500">{abbreviateNumber(data.likes)} beğeni</p>
       </div>
-      <a href="/" className="whitespace-no-wrap inline-flex items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150 w-full">
+      <p onClick={() => props.history.push(`/category/${data.id}`)} className="cursor-pointer whitespace-no-wrap inline-flex items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150 w-full">
         Hemen Çöz!
-      </a>
+      </p>
     </div>
   )
 }
