@@ -146,11 +146,33 @@ export const FETCH_ALL_TASKS = `query getAllTasks {
   getAllTasks {
       id
       categoryId
+      categoryName
       name
       difficulty
       solvedCount
       isSolved
       step
+  }
+}`
+
+export const FETCH_TASK = `query getTask($id: String!) {
+  getTask(id: $id) {
+    id
+    categoryId
+    name
+    difficulty
+    solvedCount
+    step
+    data {
+      languages {
+        python
+        java
+        javascript
+        c_cpp
+        csharp
+      }
+      content
+    }
   }
 }`
 

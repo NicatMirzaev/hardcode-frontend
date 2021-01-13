@@ -223,7 +223,7 @@ const Category = props => {
           </div>
         </div>
         <div className="flex flex-col h-full w-11/12">
-          {filteredTasks.length > 0 && filteredTasks.map(task => <TaskCard key={task.id} data={task}/>)}
+          {filteredTasks.length > 0 && filteredTasks.map(task => <TaskCard key={task.id} data={task} categoryName={data.category.name} history={props.history}/>)}
         </div>
       </div>
     </div>

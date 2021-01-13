@@ -28,3 +28,6 @@ html, body, #root {
     margin-top: auto;
   }
 }
+.markdown > p {
+  margin-bottom: 0.5rem;
+}

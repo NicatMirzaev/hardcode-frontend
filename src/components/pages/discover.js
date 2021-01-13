@@ -14,6 +14,10 @@ const Discover = props => {
   const [filteredData, setFilteredData] = React.useState({});
 
   React.useEffect(() => {
+    setData({});
+    setFilter('');
+    setFilteredData({});
+    setMenu({show: false, chosen: 'Kategoriler'});
     const value = getValue('token');
     fetch(settings.apiURL, {
       method: 'POST',
@@ -173,7 +177,7 @@ const Discover = props => {
     else if(menu.chosen == "Görevler") {
       return (
         <div className="flex flex-col mx-auto h-full w-11/12">
-          {filteredData.length > 0 && filteredData.slice(0, 20).map(task => <TaskCard key={task.id} data={task}/>)}
+          {filteredData.length > 0 && filteredData.slice(0, 20).map(task => <TaskCard key={task.id} data={task} categoryName={task.categoryName} history={props.history}/>)}
         </div>
       )
     }

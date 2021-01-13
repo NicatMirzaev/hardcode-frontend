@@ -9,6 +9,7 @@ import Profile from '../redux/containers/profile';
 import Discover from '../redux/containers/discover';
 import Leaderboard from '../redux/containers/leaderboard';
 import Category from '../redux/containers/category';
+import Task from '../redux/containers/task';
 import settings from '../lib/settings';
 import { getValue } from '../lib/store.js';
 import { USER_DETAILS, GET_CATEGORIES} from '../lib/queries';
@@ -58,6 +59,7 @@ const App = props => {
       <Route path="/discover" component={Discover}/>
       <Route path="/leaderboard" component={Leaderboard}/>
       <Route path="/category/:id" component={Category}/>
+      <Route path="/task/:id" component={Task}/>
     </Switch>
   )
 };

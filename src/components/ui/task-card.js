@@ -14,14 +14,14 @@ const TaskCard = props => {
       difficultyColor = "#ff0000";
   }
   return (
-    <div className="flex w-full sm:flex-row flex-col sm:ml-0 sm:mr-0 ml-auto mr-6 items-center justify-between rounded shadow-lg">
+    <div onClick={() => props.history.push(`/task/${data.id}`)} className="flex w-full sm:flex-row flex-col sm:ml-0 sm:mr-0 ml-auto mr-6 items-center justify-between rounded shadow-lg cursor-pointer">
       <div className="flex flex-col p-6">
         <span className="text-center sm:text-left" style={{fontFamily: 'OpenSans, Arial, Helvetica, sans-serif', fontWeight: 400, fontStyle: 'normal', fontSize: '21px', color: '1ba94c'}}>{data.name}</span>
         <div className="flex sm:flex-row flex-col items-center">
           <span style={{fontFamily: 'OpenSans, Arial, Helvetica, sans-serif', fontWeight: 400, fontStyle: 'normal', fontSize: '12px', color: '#738f93', marginRight: '0.25rem'}}>Zorluk: </span>
           <span style={{fontFamily: 'OpenSans, Arial, Helvetica, sans-serif', fontWeight: 400, fontStyle: 'normal', fontSize: '12px', color: difficultyColor, marginRight: '0.30rem'}}>{data.difficulty},</span>
           <span style={{fontFamily: 'OpenSans, Arial, Helvetica, sans-serif', fontWeight: 400, fontStyle: 'normal', fontSize: '12px', color: '#738f93', marginRight: '0.25rem'}}>Kategori: </span>
-          <span style={{fontFamily: 'OpenSans, Arial, Helvetica, sans-serif', fontWeight: 400, fontStyle: 'normal', fontSize: '12px', color: '#738f93', marginRight: '0.30rem'}}>Javascript (Başlangıç),</span>
+          <span style={{fontFamily: 'OpenSans, Arial, Helvetica, sans-serif', fontWeight: 400, fontStyle: 'normal', fontSize: '12px', color: '#738f93', marginRight: '0.30rem'}}>{props.categoryName},</span>
           <span style={{fontFamily: 'OpenSans, Arial, Helvetica, sans-serif', fontWeight: 400, fontStyle: 'normal', fontSize: '12px', color: '#738f93'}}>Çözülme Sayısı: {data.solvedCount}</span>
         </div>
       </div>
