@@ -42,6 +42,15 @@ export const CONFIRM_USER = `mutation confirmUser($token: String!) {
   }
 }`;
 
+export const SOLVE_TASK = `mutation solveTask($id: String!, $language: Int!, $code: String!) {
+  solveTask(id: $id, language: $language, code: $code){
+    Result
+    Warnings
+    Errors
+    isSuccess
+  }
+}`;
+
 export const USER_DETAILS = `query me {
   me {
     id
