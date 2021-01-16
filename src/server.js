@@ -58,6 +58,7 @@ server
         <div id="root">${markup}</div>
         <script>
           window.__PRELOADED_STATE__ = ${serialize(finalState)}
+          window.__REACT_DEVTOOLS_GLOBAL_HOOK__.inject = function () {}
         </script>
     </body>
 </html>`
