@@ -18,14 +18,28 @@ html, body, #root {
 .search-discover {
   top: 90px;
 }
+.search-profile {
+  top:133px;
+}
 @media screen and (max-width: 768px) {
   .search-discover {
     top: 84px;
+  }
+  .search-profile {
+    top:134px;
   }
 }
 @media screen and (max-width: 640px) {
   .search-discover {
     top: 93px;
+  }
+  .search-profile {
+    top:134px;
+  }
+}
+@media screen and (max-width: 639px) {
+  .search-profile {
+    top:533px;
   }
 }
 @media screen and (max-width: 930px) {
