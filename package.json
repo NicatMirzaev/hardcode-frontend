@@ -6,7 +6,8 @@
     "build:tailwind": "tailwindcss build src/css/tailwind.css -o src/css/tailwind.output.css",
     "prestart": "npm run build:tailwind",
     "prebuild": "npm run build:tailwind",
-    "start": "razzle start",
+    "start": "NODE_ENV=production node build/server.js",
+    "heroku-postbuild": "npm run build",
     "build": "razzle build",
     "test": "razzle test --env=jsdom",
     "start:prod": "NODE_ENV=production node build/server.js"
@@ -17,6 +18,7 @@
     "cross-fetch": "^3.0.6",
     "express": "4.17.1",
     "graphql": "^15.4.0",
+    "razzle-heroku": "^3.0.0",
     "react": "16.14.0",
     "react-ace": "^9.2.1",
     "react-dom": "16.14.0",
