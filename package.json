@@ -10,6 +10,7 @@
     "heroku-postbuild": "npm run build",
     "build": "razzle build",
     "test": "razzle test --env=jsdom",
+    "start:prod": "npm run build"
   },
   "dependencies": {
     "@apollo/client": "^3.2.7",
