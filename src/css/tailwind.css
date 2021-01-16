@@ -15,12 +15,17 @@ html, body, #root {
 .mt-card-container {
   margin-top: 0;
 }
-.search {
-  top: 133px;
+.search-discover {
+  top: 90px;
 }
-@media screen and (max-width: 639px) {
-  .search {
-    top: 569px;
+@media screen and (max-width: 768px) {
+  .search-discover {
+    top: 84px;
+  }
+}
+@media screen and (max-width: 640px) {
+  .search-discover {
+    top: 93px;
   }
 }
 @media screen and (max-width: 930px) {
