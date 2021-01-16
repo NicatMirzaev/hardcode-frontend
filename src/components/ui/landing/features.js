@@ -1,5 +1,10 @@
 import React from 'react';
 import FreeIcon from '../../../icons/free.png';
+import CodingIcon from '../../../icons/coding.svg';
+import TurkeyIcon from '../../../icons/turkey.svg';
+import WebsiteIcon from '../../../icons/website.svg';
+import WorkingIcon from '../../../icons/working.svg';
+import RocketIcon from '../../../icons/rocket.svg';
 
 const features = [
   {
@@ -10,33 +15,33 @@ const features = [
   },
   {
     key: 2,
-    icon: FreeIcon,
-    title: "Ücretsiz!",
-    desc: "Platformumuz tamamen ücretsizdir, herhangi bir ücret ödemeden gönül rahatlığıyla kullanabilirsiniz."
+    icon: CodingIcon,
+    title: "Çoklu Dil Desteği!",
+    desc: "Çoklu dil desteği sayesinde istediğiniz popüler programlama dilini kullanabilirsiniz. (Python, Java, C++, C#, Javascript)"
   },
   {
     key: 3,
-    icon: FreeIcon,
-    title: "Ücretsiz!",
-    desc: "Platformumuz tamamen ücretsizdir, herhangi bir ücret ödemeden gönül rahatlığıyla kullanabilirsiniz."
+    icon: TurkeyIcon,
+    title: "Tamamen Türkçe!",
+    desc: "Görevler de dahil olmak üzere tüm site Türkçe dilindedir. Bu sayede görevleri anlamakta zorluk çekmeyeceksiniz."
   },
   {
     key: 4,
-    icon: FreeIcon,
-    title: "Ücretsiz!",
-    desc: "Platformumuz tamamen ücretsizdir, herhangi bir ücret ödemeden gönül rahatlığıyla kullanabilirsiniz."
+    icon: WebsiteIcon,
+    title: "Kolay Arayüz!",
+    desc: "Kullanıcı arayüzü kolay ve sade tutulmuştur. Aradığınız şeyi hemen bulabileceksiniz."
   },
   {
     key: 5,
-    icon: FreeIcon,
-    title: "Ücretsiz!",
-    desc: "Platformumuz tamamen ücretsizdir, herhangi bir ücret ödemeden gönül rahatlığıyla kullanabilirsiniz."
+    icon: WorkingIcon,
+    title: "Rahat Çalışma Ortamı!",
+    desc: "Kodları başka bir yerden yüklemek yerine direkt olarak sitemizden kodları yazabiliyorsunuz. Kodun sonuçlarını da anlık olarak görebiliyorsunuz."
   },
   {
     key: 6,
-    icon: FreeIcon,
-    title: "Ücretsiz!",
-    desc: "Platformumuz tamamen ücretsizdir, herhangi bir ücret ödemeden gönül rahatlığıyla kullanabilirsiniz."
+    icon: RocketIcon,
+    title: "Çok Hızlı!",
+    desc: "Güçlü sunucularımız sayesinde kodları çok hızlı çalıştırıp sonuçları elde edebiliyorsunuz. Artık beklemeye gerek yok!"
   }
 ];
 
