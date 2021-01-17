@@ -284,6 +284,7 @@ const Task = props => {
         </div>
         <Editor
           placeholder="Kodlarınızı buraya yazın.."
+          style={{minHeight: '350px'}}
           mode={language}
           width="50%"
           theme="monokai"
