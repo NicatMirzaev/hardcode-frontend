@@ -249,6 +249,12 @@ const Task = props => {
       )
     }
   }
+
+  const handleClick = lang => {
+    setLanguage(lang);
+    setCode(data.data.languages[lang]);
+    setMenu(false);
+  }
   return (
     <div className="flex w-full h-full">
       <div className="flex sm:w-1/5 w-1/3">
@@ -270,7 +276,7 @@ const Task = props => {
             <div style={{top: '183px'}} className="absolute mt-2 w-56 rounded-md shadow-lg">
               <div className="rounded-md bg-white shadow-xs">
                 <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-                  {Object.keys(data.data.languages).map(lang => <p onClick={() => {setLanguage(lang); setMenu(false)}} key={lang} className="block cursor-pointer px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" role="menuitem">{getDisplayLanguageName(lang)}</p>)}
+                  {Object.keys(data.data.languages).map(lang => <p onClick={() => handleClick(lang)} key={lang} className="block cursor-pointer px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" role="menuitem">{getDisplayLanguageName(lang)}</p>)}
                 </div>
               </div>
             </div>
@@ -296,7 +302,7 @@ const Task = props => {
         <p onClick={runCode} style={{borderRadius: '8rem'}} className="whitespace-no-wrap cursor-pointer inline-flex w-32 mb-6 mt-6 items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
           Çalıştır
         </p>
-        
+
         {renderOutput()}
       </div>
     </div>
