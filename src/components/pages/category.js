@@ -127,9 +127,9 @@ const Category = props => {
       const mustSolved = checkboxStates.cb1;
       const mustUnsolved = checkboxStates.cb2;
       let difficulty = "any";
-      if(checkboxStates.cb3 === true) difficulty = "Kolay";
-      else if(checkboxStates.cb4 === true) difficulty = "Orta";
-      else if(checkboxStates.cb5 === true) difficulty = "Zor";
+      if(checkboxStates.cb3 === true) difficulty = "Easy";
+      else if(checkboxStates.cb4 === true) difficulty = "Medium";
+      else if(checkboxStates.cb5 === true) difficulty = "Hard";
       for(let i = 0; i < data.tasks.length; i++) {
         if(mustSolved === true) {
           if(data.tasks[i].isSolved === true) {
@@ -205,21 +205,21 @@ const Category = props => {
           <h2 className="text-xl text-center tracking-tight sm:mx-auto leading-10 mb-4 font-extrabold text-gray-900 sm:text-3xl sm:leading-none md:text-4xl">{data.category.name}</h2>
           <div className="flex mx-auto items-center mb-6">
             <img className="mr-2" src={EyeIcon}/>
-            <p className="text-sm leading-6 mr-4 text-gray-500">{abbreviateNumber(data.category.views)} görüntüleme</p>
+            <p className="text-sm leading-6 mr-4 text-gray-500">{abbreviateNumber(data.category.views)} views</p>
             {data.category.isLiked === true ? <img onClick={onClickLike} className="mr-2 cursor-pointer" src={HeartRedIcon}/> : <img onClick={onClickLike} className="mr-2 cursor-pointer" src={HeartIcon}/>}
-            <p className="text-sm leading-6 text-gray-500">{abbreviateNumber(data.category.likes)} beğeni</p>
+            <p className="text-sm leading-6 text-gray-500">{abbreviateNumber(data.category.likes)} likes</p>
           </div>
           <div className="sm:flex hidden flex-wrap mx-auto items-center">
             <input onChange={() => handleCheckbox(1)} checked={checkbox.cb1} style={{width: '20px', height: '16px', marginRight: '2px'}} type="checkbox"/>
-            <span className="text-sm mr-4">Çözülen</span>
+            <span className="text-sm mr-4">Solved</span>
             <input onChange={() => handleCheckbox(2)} checked={checkbox.cb2} style={{width: '20px', height: '16px', marginRight: '2px'}} type="checkbox"/>
-            <span className="text-sm mr-4">Çözülmeyen</span>
+            <span className="text-sm mr-4">Unsolved</span>
             <input onChange={() => handleCheckbox(3)} checked={checkbox.cb3} style={{width: '20px', height: '16px', marginRight: '2px'}} type="checkbox"/>
-            <span className="text-sm mr-4">Kolay</span>
+            <span className="text-sm mr-4">Easy</span>
             <input onChange={() => handleCheckbox(4)} checked={checkbox.cb4} style={{width: '20px', height: '16px', marginRight: '2px'}} type="checkbox"/>
-            <span className="text-sm mr-4">Orta</span>
+            <span className="text-sm mr-4">Medium</span>
             <input onChange={() => handleCheckbox(5)} checked={checkbox.cb5} style={{width: '20px', height: '16px', marginRight: '2px'}} type="checkbox"/>
-            <span className="text-sm mr-4">Zor</span>
+            <span className="text-sm mr-4">Hard</span>
           </div>
         </div>
         <div className="flex flex-col h-full w-11/12">

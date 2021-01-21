@@ -1,7 +1,7 @@
 import React from 'react';
 import FreeIcon from '../../../icons/free.png';
 import CodingIcon from '../../../icons/coding.svg';
-import TurkeyIcon from '../../../icons/turkey.svg';
+import EnglishIcon from '../../../icons/english-language.svg';
 import WebsiteIcon from '../../../icons/website.svg';
 import WorkingIcon from '../../../icons/working.svg';
 import RocketIcon from '../../../icons/rocket.svg';
@@ -10,38 +10,38 @@ const features = [
   {
     key: 1,
     icon: FreeIcon,
-    title: "Ücretsiz!",
-    desc: "Platformumuz tamamen ücretsizdir, herhangi bir ücret ödemeden gönül rahatlığıyla kullanabilirsiniz."
+    title: "Free!",
+    desc: "Our platform is completely free, you can use it without any charge."
   },
   {
     key: 2,
     icon: CodingIcon,
-    title: "Çoklu Dil Desteği!",
-    desc: "Çoklu dil desteği sayesinde istediğiniz popüler programlama dilini kullanabilirsiniz. (Python, Java, C++, C#, Javascript)"
+    title: "Multi Language Support!",
+    desc: "By multi-language support, you can use the popular programming language you want. (Python, Java, C++, C#, Javascript)"
   },
   {
     key: 3,
-    icon: TurkeyIcon,
-    title: "Tamamen Türkçe!",
-    desc: "Görevler de dahil olmak üzere tüm site Türkçe dilindedir. Bu sayede görevleri anlamakta zorluk çekmeyeceksiniz."
+    icon: EnglishIcon,
+    title: "All in English!",
+    desc: "The entire site, including the tasks, is in English. In this way, you will have no difficulty understanding the tasks."
   },
   {
     key: 4,
     icon: WebsiteIcon,
-    title: "Kolay Arayüz!",
-    desc: "Kullanıcı arayüzü kolay ve sade tutulmuştur. Aradığınız şeyi hemen bulabileceksiniz."
+    title: "Easy user interface!",
+    desc: "The user interface has been kept simple and easy. You will be able to find what you are looking for immediately."
   },
   {
     key: 5,
     icon: WorkingIcon,
-    title: "Rahat Çalışma Ortamı!",
-    desc: "Kodları başka bir yerden yüklemek yerine direkt olarak sitemizden kodları yazabiliyorsunuz. Kodun sonuçlarını da anlık olarak görebiliyorsunuz."
+    title: "Comfortable Working Environment!",
+    desc: "You can write the codes directly from our site instead of loading the codes from another place. You can also see the results of the code instantly."
   },
   {
     key: 6,
     icon: RocketIcon,
-    title: "Çok Hızlı!",
-    desc: "Güçlü sunucularımız sayesinde kodları çok hızlı çalıştırıp sonuçları elde edebiliyorsunuz. Artık beklemeye gerek yok!"
+    title: "Very Fast!",
+    desc: "Thanks to our powerful servers, you can run the codes very quickly and get the results. No need to wait any longer!"
   }
 ];
 

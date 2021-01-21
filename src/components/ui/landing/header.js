@@ -9,7 +9,7 @@ const Header = props => {
   React.useEffect(() => {
 
     function handleClick(e){
-      if(menu == true && e.target.outerText !== "Abone Ol" && e.target.outerText !== "Hemen Başla"){
+      if(menu == true && e.target.outerText !== "Subscribe" && e.target.outerText !== "Get Started"){
         setMenu(false);
       }
     }
@@ -33,11 +33,11 @@ const Header = props => {
           </div>
           <div className="hidden md:flex items-center justify-end space-x-8 md:flex-1 lg:w-0">
             <a href="/" onClick={e => props.onClickSubscribe(e)} className="whitespace-no-wrap text-base leading-6 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900">
-              Abone Ol
+              Subscribe
             </a>
             <span className="inline-flex rounded-md shadow-sm">
               <a href="/" onClick={e => props.onClickGetStarted(e)} className="whitespace-no-wrap inline-flex items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
-                Hemen Başla!
+                Get Started!
               </a>
             </span>
           </div>
@@ -47,8 +47,8 @@ const Header = props => {
               <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg">
                 <div className="rounded-md bg-white shadow-xs">
                   <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-                    <a href="/" className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" role="menuitem">Abone Ol</a>
-                    <a href="/" onClick={e => props.onClickGetStarted(e)} className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" role="menuitem">Hemen Başla</a>
+                    <a href="/" onClick={e => props.onClickSubscribe(e)} className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" role="menuitem">Subscribe</a>
+                    <a href="/" onClick={e => props.onClickGetStarted(e)} className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" role="menuitem">Get Started</a>
                   </div>
                 </div>
               </div>

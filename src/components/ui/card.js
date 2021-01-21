@@ -68,14 +68,14 @@ const Card = props => {
       <h4 onClick={() => props.history.push(`/category/${data.id}`)} className="cursor-pointer text-lg text-center leading-6 font-medium text-gray-900 mb-6">{data.name}</h4>
       <div className="flex ml-6 mb-2">
         <img className="mr-2" src={EyeIcon}/>
-        <p className="text-sm leading-6 text-gray-500">{abbreviateNumber(data.views)} görüntüleme</p>
+        <p className="text-sm leading-6 text-gray-500">{abbreviateNumber(data.views)} views</p>
       </div>
       <div className="flex ml-6 mb-8">
         {data.isLiked === true ? <img onClick={onClickLike} className="mr-2 cursor-pointer" src={HeartRedIcon}/> : <img onClick={onClickLike} className="mr-2 cursor-pointer" src={HeartIcon}/>}
-        <p className="text-sm leading-6 text-gray-500">{abbreviateNumber(data.likes)} beğeni</p>
+        <p className="text-sm leading-6 text-gray-500">{abbreviateNumber(data.likes)} likes</p>
       </div>
       <p onClick={() => props.history.push(`/category/${data.id}`)} className="cursor-pointer whitespace-no-wrap inline-flex items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150 w-full">
-        Hemen Çöz!
+        Solve!
       </p>
     </div>
   )

@@ -231,7 +231,7 @@ const Task = props => {
             if(data.isSuccess === false) {
               return (
                 <div>
-                  <h5 className="pl-6 pt-6 font-extrabold text-red-600">» Test {index + 1} başarısız!</h5>
+                  <h5 className="pl-6 pt-6 font-extrabold text-red-600">» Test {index + 1} failed!</h5>
                   <p className="pl-12 pr-2 pb-6 text-sm text-red-600">{data.Errors ? data.Errors : data.Result}</p>
                 </div>
               )
@@ -239,7 +239,7 @@ const Task = props => {
             else {
               return (
                 <div>
-                  <h5 className="pl-6 pt-6 font-extrabold text-green-600">» Test {index + 1} başarılı!</h5>
+                  <h5 className="pl-6 pt-6 font-extrabold text-green-600">» Test {index + 1} success!</h5>
                   <p className="pl-12 pr-2 pb-6 text-sm text-green-600">{data.Result}</p>
                 </div>
               )
@@ -265,7 +265,7 @@ const Task = props => {
           <ReactMarkdown className="p-4 markdown" children={data.data.content}/>
         </div>
         <div className="flex justify-center mb-16 items-center w-1/2">
-          <span className="text-gray-500 font-bold mr-6">Dil</span>
+          <span className="text-gray-500 font-bold mr-6">Language</span>
           <button onClick={() => setMenu(!menu)} type="button" className="inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="options-menu" aria-haspopup="true" aria-expanded="true">
             {getDisplayLanguageName(language)}
             <svg className="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -283,7 +283,7 @@ const Task = props => {
           }
         </div>
         <Editor
-          placeholder="Kodlarınızı buraya yazın.."
+          placeholder="Write some code.."
           style={{minHeight: '350px'}}
           mode={language}
           width="50%"
@@ -301,7 +301,7 @@ const Task = props => {
           }}
         />
         <p onClick={runCode} style={{borderRadius: '8rem'}} className="whitespace-no-wrap cursor-pointer inline-flex w-32 mb-6 mt-6 items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
-          Çalıştır
+          Submit code
         </p>
 
         {renderOutput()}

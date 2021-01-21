@@ -40,7 +40,7 @@ const Leaderboard = props => {
             setState({loading: false, error: ''})
           }
           else {
-            setState({loading: false, error: 'Lider tablosunu göstermek için yeterli kayıtlı üye yok.'})
+            setState({loading: false, error: 'There are not enough registered members to show the leaderboard.'})
           }
         }
       })
@@ -100,19 +100,19 @@ const Leaderboard = props => {
             {data[0].profileImg.length > 0 ? <img width="64" height="64" className="mb-4 mt-6 rounded-full" src={data[0].profileImg}/> : <img width="64" height="64" className="mb-4 mt-6 rounded-full" src={ProfileIcon}/>}
             <img src={SecondPlace} className="mb-2"/>
             <span className="text-base font-bold">{data[1].username}</span>
-            <span className="text-sm text-gray-500 mb-3">Seviye {data[1].level}</span>
+            <span className="text-sm text-gray-500 mb-3">Level {data[1].level}</span>
           </div>
           <div onClick={() => props.history.push(`/profile/${data[0].id}`)} className="flex cursor-pointer flex-col sm:w-48 items-center sm:mr-6 mr-0  w-40 rounded overflow-hidden shadow-lg">
             {data[0].profileImg.length > 0 ? <img width="64" height="64" className="mb-4 mt-6 rounded-full" src={data[0].profileImg}/> : <img width="64" height="64" className="mb-4 mt-6 rounded-full" src={ProfileIcon}/>}
             <img src={FirstPlace} className="mb-2"/>
             <span className="text-base font-bold">{data[0].username}</span>
-            <span className="text-sm text-gray-500 mb-3">Seviye {data[0].level}</span>
+            <span className="text-sm text-gray-500 mb-3">Level {data[0].level}</span>
           </div>
           <div onClick={() => props.history.push(`/profile/${data[2].id}`)} className="flex cursor-pointer flex-col sm:w-48 items-center w-40 rounded overflow-hidden shadow-lg">
             {data[2].profileImg.length > 0 ? <img width="64" height="64" className="mb-4 mt-6 rounded-full" src={data[2].profileImg}/> : <img width="64" height="64" className="mb-4 mt-6 rounded-full" src={ProfileIcon}/>}
             <img src={ThirdPlace} className="mb-2"/>
             <span className="text-base font-bold">{data[2].username}</span>
-            <span className="text-sm text-gray-500 mb-3">Seviye {data[2].level}</span>
+            <span className="text-sm text-gray-500 mb-3">Level {data[2].level}</span>
           </div>
         </div>
         <div className="flex sm:w-1/2 w-full flex-col">
@@ -123,7 +123,7 @@ const Leaderboard = props => {
               {user.profileImg.length > 0 ? <img width="64" height="64" className="rounded-full mr-2 sm:mb-0 mb-4" src={user.profileImg}/> : <img width="64" height="64" className="mb-4 mt-6 rounded-full" src={ProfileIcon}/>}
               <div style={{backgroundColor: '#EAA786', borderRadius: '4rem'}} className="flex sm:flex-row flex-col sm:justify-between items-center sm:w-full w-10/12 h-12">
                 <span className="text-base sm:pl-4 pl-0 font-bold">{user.username}</span>
-                <span className="text-base sm:pl-4 pl-0">Seviye {user.level}</span>
+                <span className="text-base sm:pl-4 pl-0">Level {user.level}</span>
               </div>
             </div>
           )

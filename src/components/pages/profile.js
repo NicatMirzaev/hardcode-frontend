@@ -139,7 +139,7 @@ const Profile = props => {
         }
         else {
           const userData = data.data.updateProfile;
-          setMsg({type: 2, msg: "Değişiklikler başarıyla uygulandı."})
+          setMsg({type: 2, msg: "Your account has been successfully saved."})
           if(userData.id === params.id) setData(userData);
           props.setUser({isLogged: true, isLoading: false, data: {token: value, user: userData}})
         }
@@ -176,9 +176,9 @@ const Profile = props => {
           {data.profileImg.length <= 0 ? <img src={ProfileIcon} width="164" height="164" className="rounded-full border-solid border-white border-2 w-36 mb-4 cursor-pointer"/> : <img src={data.profileImg} width="164" height="164" className="rounded-full border-solid border-white border-2 w-36 mb-4 cursor-pointer"/>}
           <h4 className="text-lg mb-4 leading-6 font-medium text-gray-900">{data.username}</h4>
           <div className="flex flex-col mb-6">
-            <p className="self-start mb-1 text-sm text-gray-500">Kayıt Tarihi: {timestampToDate(data.createdAt)}</p>
-            <p className="self-start mb-1 text-sm text-gray-500">Bitirilen Görevler: {data.completedTasks}</p>
-            <p className="self-start mb-4 text-sm text-gray-500">Seviye: {data.level} (XP {data.exp} / {data.requiredExp})</p>
+            <p className="self-start mb-1 text-sm text-gray-500">Register date: {timestampToDate(data.createdAt)}</p>
+            <p className="self-start mb-1 text-sm text-gray-500">Solved Tasks: {data.completedTasks}</p>
+            <p className="self-start mb-4 text-sm text-gray-500">Level: {data.level} (XP {data.exp} / {data.requiredExp})</p>
             <div className="mb-4" style={{width: '100%', backgroundColor: '#ddd', height: '10px'}}>
               <div style={{width: calculatePercentage(data.exp, data.requiredExp), backgroundColor: '#4CAF50', height: '10px'}}/>
             </div>
@@ -190,7 +190,7 @@ const Profile = props => {
           </div>
           {params.id == userData.id &&
             <p onClick={() => setContent(1)} style={{borderRadius: '8rem'}} className="whitespace-no-wrap cursor-pointer inline-flex w-full items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
-              Profil Ayarları
+              Profile Settings
             </p>
           }
         </div>
@@ -203,7 +203,7 @@ const Profile = props => {
                     <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" className="w-6 h-6"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                   </button>
                 </span>
-                <input onChange={e => handleChange(e)} style={{borderRadius: '12rem'}} className="shadow appearance-none w-full border py-2 px-12 text-grey-darker" placeholder="Arama"/>
+                <input onChange={e => handleChange(e)} style={{borderRadius: '12rem'}} className="shadow appearance-none w-full border py-2 px-12 text-grey-darker" placeholder="Search"/>
               </div>
               <div className="flex w-full h-full flex-wrap">
                 {categories.length > 0 ? categories.map(category => <Card history={props.history} key={category.id} data={category}/>) : null}
@@ -211,17 +211,17 @@ const Profile = props => {
             </div>
             :
             <div>
-              <h4 onClick={() => setContent(0)} className="text-lg mb-12 leading-6 cursor-pointer font-medium text-gray-900">{'<'} Profil Ayarları</h4>
-              <input defaultValue={userData.username} onChange={e => setUsername(e.target.value)} className="shadow appearance-none w-11/12 border mb-12 rounded py-2 px-3 text-grey-darker" placeholder="Kullanıcı Adı"/>
-              <input defaultValue={userData.profileImg} onChange={e => setImg(e.target.value)} className="shadow appearance-none w-11/12 border mb-12 rounded py-2 px-3 text-grey-darker" placeholder="Profil Resmi URL"/>
-              <input defaultValue={userData.twitterURL} onChange={e => setTwitter(e.target.value)} className="shadow appearance-none w-11/12 border mb-12 rounded py-2 px-3 text-grey-darker" placeholder="Twitter Adresi"/>
-              <input defaultValue={userData.GitHubURL} onChange={e => setGitHub(e.target.value)} className="shadow appearance-none w-11/12 border mb-12 rounded py-2 px-3 text-grey-darker" placeholder="GitHub Adresi"/>
-              <input defaultValue={userData.LinkedinURL} onChange={e => setLinkedin(e.target.value)} className="shadow appearance-none w-11/12 border mb-12 rounded py-2 px-3 text-grey-darker" placeholder="Linkedin adresi"/>
-              <input value={currentPassword} onChange={e => setCurrentPassword(e.target.value)} className="shadow appearance-none w-11/12 border mb-12 rounded py-2 px-3 text-grey-darker" placeholder="Mevcut Şifreniz"/>
-              <input value={newPassword} onChange={e => setNewPassword(e.target.value)} className="shadow appearance-none w-11/12 border mb-12 rounded py-2 px-3 text-grey-darker" placeholder="Yeni Şifre"/>
+              <h4 onClick={() => setContent(0)} className="text-lg mb-12 leading-6 cursor-pointer font-medium text-gray-900">{'<'} Profile Settings</h4>
+              <input defaultValue={userData.username} onChange={e => setUsername(e.target.value)} className="shadow appearance-none w-11/12 border mb-12 rounded py-2 px-3 text-grey-darker" placeholder="Username"/>
+              <input defaultValue={userData.profileImg} onChange={e => setImg(e.target.value)} className="shadow appearance-none w-11/12 border mb-12 rounded py-2 px-3 text-grey-darker" placeholder="Profile Image URL"/>
+              <input defaultValue={userData.twitterURL} onChange={e => setTwitter(e.target.value)} className="shadow appearance-none w-11/12 border mb-12 rounded py-2 px-3 text-grey-darker" placeholder="Twitter Address"/>
+              <input defaultValue={userData.GitHubURL} onChange={e => setGitHub(e.target.value)} className="shadow appearance-none w-11/12 border mb-12 rounded py-2 px-3 text-grey-darker" placeholder="GitHub Address"/>
+              <input defaultValue={userData.LinkedinURL} onChange={e => setLinkedin(e.target.value)} className="shadow appearance-none w-11/12 border mb-12 rounded py-2 px-3 text-grey-darker" placeholder="Linkedin Address"/>
+              <input value={currentPassword} onChange={e => setCurrentPassword(e.target.value)} className="shadow appearance-none w-11/12 border mb-12 rounded py-2 px-3 text-grey-darker" placeholder="Current Password"/>
+              <input value={newPassword} onChange={e => setNewPassword(e.target.value)} className="shadow appearance-none w-11/12 border mb-12 rounded py-2 px-3 text-grey-darker" placeholder="New Password"/>
               {showMessage()}
               <p onClick={updateProfile} style={{borderRadius: '8rem'}} className="whitespace-no-wrap cursor-pointer mb-12 inline-flex w-11/12 items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
-                Kaydet
+                Save changes
               </p>
             </div>
           }

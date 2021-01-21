@@ -40,7 +40,7 @@ server
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta charset="utf-8" />
-        <title>HardCode - Programlama Bilgini Geliştir!</title>
+        <title>HardCode - Improve your programming skills!</title>
         <link rel="stylesheet" href="https://pagecdn.io/lib/font-awesome/5.10.0-11/css/all.min.css" integrity="sha256-p9TTWD+813MlLaxMXMbTA7wN/ArzGyW/L7c5+KkjOkM=" crossorigin="anonymous">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         ${

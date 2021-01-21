@@ -9,7 +9,7 @@ const ResetPassword = props => {
   const token = props.match.params.token;
 
   const handleClick = () => {
-    if(password !== passwordAgain) return setMessage({type: 1, msg: 'Şifre tekrarı hatalı.'})
+    if(password !== passwordAgain) return setMessage({type: 1, msg: 'Passwords do not match.'})
     fetch(settings.apiURL, {
       method: 'POST',
       headers: {
@@ -33,9 +33,9 @@ const ResetPassword = props => {
   }
   return (
     <div className="flex mt-16 flex-col items-center">
-      <h2 className="text-4xl tracking-tight mb-12 leading-10 font-extrabold text-gray-900 sm:text-3xl sm:leading-none">Şifre Değiştirme</h2>
-      <input type="password" className="shadow appearance-none border w-full sm:w-1/3 rounded py-2 px-3 text-grey-darker" placeholder="Yeni Şifre" value={password} onChange={e => setPassword(e.target.value)}/>
-      <input type="password" className="shadow appearance-none border w-full sm:w-1/3 rounded py-2 px-3 mt-6 text-grey-darker" placeholder="Yeni Şifre Tekrar" value={passwordAgain} onChange={e => setPasswordAgain(e.target.value)}/>
+      <h2 className="text-4xl tracking-tight mb-12 leading-10 font-extrabold text-gray-900 sm:text-3xl sm:leading-none">Change Password</h2>
+      <input type="password" className="shadow appearance-none border w-full sm:w-1/3 rounded py-2 px-3 text-grey-darker" placeholder="New Password" value={password} onChange={e => setPassword(e.target.value)}/>
+      <input type="password" className="shadow appearance-none border w-full sm:w-1/3 rounded py-2 px-3 mt-6 text-grey-darker" placeholder="Password Again" value={passwordAgain} onChange={e => setPasswordAgain(e.target.value)}/>
       {message.type === 1 ?
         <span className="text-sm mt-6 text-red-500">
           {message.msg}
@@ -46,7 +46,7 @@ const ResetPassword = props => {
         </span>
       }
       <p onClick={handleClick} className="mt-12 w-full cursor-pointer sm:w-1/3 px-8 py-3 border border-transparent text-base leading-6 font-medium text-center rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
-        Şifreyi Değiştir!
+        Change Password!
       </p>
     </div>
   )

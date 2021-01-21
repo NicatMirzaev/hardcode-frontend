@@ -109,7 +109,7 @@ const Home = props => {
   }
 
   const onClickForgotPassword = () => {
-      if(!email.length) return setState({disabled: false, error: 'Lütfen hesabınızın email adresini girin.'});
+      if(!email.length) return setState({disabled: false, error: 'Please enter your email address.'});
       fetch(settings.apiURL, {
         method: 'POST',
         headers: {
@@ -143,25 +143,25 @@ const Home = props => {
               </svg>
             </div>
           </div>
-          <div className="flex justify-center"><h2 className="text-4x1 font-bold">Kayıt Ol</h2></div>
+          <div className="flex justify-center"><h2 className="text-4x1 font-bold">Sign up</h2></div>
           <form className={`pt-6 pb-2 my-2 ${state.disabled === true ? "pointer-events-none" : ""}`}>
             <div className="mb-4">
               <label className="block text-sm font-bold mb-2" htmlFor="username">
-                Kullanıcı Adı
+                Username
               </label>
-              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="username" type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Kullanıcı Adınız"/>
+              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="username" type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Username"/>
             </div>
             <div className="mb-4">
               <label className="block text-sm font-bold mb-2" htmlFor="email">
-                Email Adresi
+                Email Address
               </label>
-              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="email" type="text" value={email} onChange={e => setEmail(e.target.value)} placeholder="Email Adresiniz"/>
+              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="email" type="text" value={email} onChange={e => setEmail(e.target.value)} placeholder="Email Address"/>
             </div>
             <div className="mb-6">
               <label className="block text-sm font-bold mb-2" htmlFor="password">
-                Şifre
+                Password
               </label>
-              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-3" id="password" type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Şifrenizi Girin"/>
+              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-3" id="password" type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password"/>
             </div>
             {state.error.length > 0 &&
               <div className="mb-3">
@@ -171,14 +171,14 @@ const Home = props => {
               </div>
             }
             <a href="/" onClick={e => onClickRegister(e)} className="whitespace-no-wrap inline-flex items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150 w-full">
-              Kayıt Ol
+              Sign up
             </a>
             <p className="mt-2 text-sm leading-6 text-gray-500 mb-6">
-              Kayıt olarak, <span className="text-blue-500 cursor-pointer">kullanım şartları</span> ve <span className="text-blue-500 cursor-pointer">gizlilik politikasını</span> kabul etmiş sayılırsınız.
+              By registering, you agree to the <span className="text-blue-500 cursor-pointer">terms of use</span> and <span className="text-blue-500 cursor-pointer">privacy policy</span>
             </p>
             <div className="flex justify-center bg-gray-200">
               <p className="text-base leading-6">
-                Hesabınız var mı? <span onClick={() => setPopup({type: 2, show: true})} className="text-blue-500 cursor-pointer">Hemen giriş yapın!</span>
+                Do you have a account? <span onClick={() => setPopup({type: 2, show: true})} className="text-blue-500 cursor-pointer">Log in!</span>
               </p>
             </div>
           </form>
@@ -195,19 +195,19 @@ const Home = props => {
               </svg>
             </div>
           </div>
-          <div className="flex justify-center"><h2 className="text-4x1 font-bold">Giriş Yap</h2></div>
+          <div className="flex justify-center"><h2 className="text-4x1 font-bold">Login</h2></div>
           <form className={`pt-6 pb-2 my-2 ${state.disabled === true ? "pointer-events-none" : ""}`}>
            <div className="mb-4">
              <label className="block text-sm font-bold mb-2" htmlFor="email">
-               Email Adresi
+               Email Address
              </label>
-             <input className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="email" value={email} onChange={e => setEmail(e.target.value)} type="text" placeholder="Email Adresiniz"/>
+             <input className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="email" value={email} onChange={e => setEmail(e.target.value)} type="text" placeholder="Email Address"/>
            </div>
            <div className="mb-6">
              <label className="block text-sm font-bold mb-2" htmlFor="password">
-               Şifre
+               Password
              </label>
-             <input className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-3" id="password" value={password} onChange={e => setPassword(e.target.value)} type="password" placeholder="Şifrenizi Girin"/>
+             <input className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-3" id="password" value={password} onChange={e => setPassword(e.target.value)} type="password" placeholder="Password"/>
            </div>
            {state.error.length > 0 &&
              <div className="mb-3">
@@ -217,14 +217,14 @@ const Home = props => {
              </div>
            }
            <a href="/" onClick={e => onClickLogin(e)} className="whitespace-no-wrap inline-flex items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150 w-full">
-             Giriş Yap
+             Login
            </a>
            <p onClick={onClickForgotPassword} className="mt-2 leading-6 text-blue-500 mb-6 cursor-pointer">
-             Şifrenizi mi unuttunuz?
+             Forgot your password?
            </p>
            <div className="flex justify-center bg-gray-200">
              <p className="text-base leading-6">
-               Hesabınız yok mu? <span onClick={() => setPopup({type: 1, show: true})} className="text-blue-500 cursor-pointer">Hemen kayıt olun!</span>
+               Don't have an account? <span onClick={() => setPopup({type: 1, show: true})} className="text-blue-500 cursor-pointer">Sign up!</span>
              </p>
            </div>
          </form>
@@ -241,9 +241,9 @@ const Home = props => {
               </svg>
             </div>
           </div>
-          <div className="flex justify-center mb-3"><h2 className="text-4x1 font-bold">Son bir adım!</h2></div>
+          <div className="flex justify-center mb-3"><h2 className="text-4x1 font-bold">One last step!</h2></div>
           <p className="text-base leading-6">
-            <span className="font-bold">{email} </span> email adresine aktivasyon linki içeren bir mail gönderildi. Hesabınızı kullanabilmek için hesabınızı onaylamanız gerekiyor.
+            An email containing an activation link was sent to the <span className="font-bold">{email} </span> email address. You need to confirm your account to use your account
           </p>
         </Popup>
       )
@@ -258,9 +258,9 @@ const Home = props => {
               </svg>
             </div>
           </div>
-          <div className="flex justify-center mb-3"><h2 className="text-4x1 font-bold">Şifre Değiştirme Onayı</h2></div>
+          <div className="flex justify-center mb-3"><h2 className="text-4x1 font-bold">Change Password</h2></div>
           <p className="text-base leading-6">
-            <span className="font-bold">{email} </span> email adresine şifre değiştirme onayı içeren bir mail gönderildi. Şifrenizi değiştirebilmek için onay vermelisiniz.
+            An email was sent to the <span className="font-bold">{email} </span> email address with a password change confirmation. You must give your consent to change your password.
           </p>
         </Popup>
       )
@@ -275,14 +275,14 @@ const Home = props => {
               </svg>
             </div>
           </div>
-          <div className="flex justify-center mb-3"><h2 className="text-4x1 font-bold">Abone Ol</h2></div>
+          <div className="flex justify-center mb-3"><h2 className="text-4x1 font-bold">Subscribe!</h2></div>
           <p className="text-base leading-6 mb-3">
-            Ücretsiz bir şekilde abone olarak yeniliklerden haberdar olmak için aşağıya e-mail adresinizi yazmalısınız. E-mail adresleri tamamen gizli tutulmaktadır, dilediğiniz zaman abonelikten çıkabilirsiniz.
+            You should write your e-mail address below to be informed about news by subscribing for free. E-mail addresses are kept completely confidential, you can unsubscribe at any time.
           </p>
           {state.error.length > 0 && <p className="text-sm text-red-500">{state.error}</p>}
-          <input className="mb-6 shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="email" value={email} onChange={e => setEmail(e.target.value)} type="text" placeholder="Email Adresiniz"/>
+          <input className="mb-6 shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="email" value={email} onChange={e => setEmail(e.target.value)} type="text" placeholder="Email Address"/>
           <p onClick={onClickSubscribePopup} className="whitespace-no-wrap cursor-pointer inline-flex w-full items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150">
-            Abone Ol
+            Subscribe
           </p>
         </Popup>
       )
@@ -299,7 +299,7 @@ const Home = props => {
           </div>
           <div className="flex justify-center mb-3"><h2 className="text-4x1 font-bold">Teşekkürler!</h2></div>
           <p className="text-base leading-6">
-            E-mail adresi başarıyla sisteme kayıt edildi. Artık yeniliklerden haberdar olacaksınız, dilediğiniz zaman abonelikten çıkabilirsiniz.
+            E-mail address has been successfully registered in the system. You will now be aware of the news, you can unsubscribe whenever you want.
           </p>
         </Popup>
       )

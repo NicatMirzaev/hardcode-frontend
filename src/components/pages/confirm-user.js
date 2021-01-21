@@ -41,7 +41,7 @@ const ConfirmUser = props => {
           </span>
         </div>
         <div className="flex justify-center">
-          <h4>Hesabınız onaylanıyor..</h4>
+          <h4>Your account is being approved..</h4>
         </div>
       </div>
     )
@@ -54,7 +54,7 @@ const ConfirmUser = props => {
             <img src={ErrorIcon}/>
           </div>
           <div className="flex justify-center">
-            <h4 className="font-bold text-red-600">Hesabınız onaylanamadı!</h4>
+            <h4 className="font-bold text-red-600">Your account could not be approved!</h4>
           </div>
         </div>
       )
@@ -66,7 +66,7 @@ const ConfirmUser = props => {
             <img src={SuccessIcon}/>
           </div>
           <div className="flex justify-center">
-            <h4 className="font-bold text-green-600">Hesabınız onaylandı!</h4>
+            <h4 className="font-bold text-green-600">Your account has been approved!</h4>
           </div>
         </div>
       )
